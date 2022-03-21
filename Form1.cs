@@ -23,8 +23,11 @@ namespace snakegame
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = Image.FromFile("images/wiese.png");
+            this.MinimumSize = new Size(800, 800); 
+            this.MaximumSize = new Size(800, 800);
 
+            this.BackgroundImage = Image.FromFile("images/wiese.png");
+            pBschlangenkopf.BackColor = Color.Red;
         }
 
         private void DatenbankAuslesen()
@@ -33,21 +36,39 @@ namespace snakegame
             MySqlCommand cmd = new MySqlCommand();
             MySqlDataReader reader;
 
-            con.ConnectionString = "datasource = 127.0.0.1; port = 3306; username = root; password =; database = mitarbeiterDB;";
+            con.ConnectionString = "datasource = 127.0.0.1; port = 3306; username = root; password =; database = snakedb;";
             cmd.Connection = con;
 
-            cmd.CommandText = "SELECT * from mitarbeiter";
+            
+            //Benutzer Datenbank auslesen:
+            cmd.CommandText = "SELECT * from benutzer";
 
             con.Open();
             reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                //listBox2.Items.Add(reader["Vorname"] + " " + reader[2]);
+                
             }
 
             reader.Close();
             con.Close();
+
+
+            //Highscore Datenbank auslesen:
+            cmd.CommandText = "SELECT * from highscore";
+
+            con.Open();
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+            }
+
+            reader.Close();
+            con.Close();
+
         }
     }
 }
