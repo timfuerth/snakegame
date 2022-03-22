@@ -23,15 +23,18 @@ namespace snakegame
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Form1 Größe:
             this.MinimumSize = new Size(800, 800); 
             this.MaximumSize = new Size(800, 800);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            
             // Start - Position
             int x = Screen.PrimaryScreen.Bounds.Width - this.Width;
             int y = Screen.PrimaryScreen.Bounds.Height - this.Height;
 
             this.Location = new Point(x / 2, y / 2);
 
+            //this.Icon = new Icon("images/snake.ico");
 
             this.BackgroundImage = Image.FromFile("images/wiese.png");
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pBschlangenkopf = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btLogin = new System.Windows.Forms.Button();
@@ -70,12 +71,13 @@
             // 
             // btLogin
             // 
+            this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogin.Location = new System.Drawing.Point(312, 3);
+            this.btLogin.Location = new System.Drawing.Point(636, 3);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(181, 38);
+            this.btLogin.Size = new System.Drawing.Size(86, 44);
             this.btLogin.TabIndex = 3;
-            this.btLogin.Text = "LOGIN/REGISTER";
+            this.btLogin.Text = "LOGIN";
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
@@ -133,7 +135,7 @@
             this.lbRestart.AutoSize = true;
             this.lbRestart.BackColor = System.Drawing.Color.Transparent;
             this.lbRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRestart.Location = new System.Drawing.Point(357, 39);
+            this.lbRestart.Location = new System.Drawing.Point(356, 98);
             this.lbRestart.Name = "lbRestart";
             this.lbRestart.Size = new System.Drawing.Size(81, 25);
             this.lbRestart.TabIndex = 4;
@@ -159,6 +161,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pBschlangenkopf);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
