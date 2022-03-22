@@ -26,7 +26,14 @@ namespace snakegame
             this.MinimumSize = new Size(800, 800); 
             this.MaximumSize = new Size(800, 800);
 
-            this.StartPosition = FormStartPosition.CenterScreen;
+            // Start - Position
+            int breite = Screen.PrimaryScreen.Bounds.Width;
+            int höhe = Screen.PrimaryScreen.Bounds.Height;
+
+            int x = breite - this.Width;
+            int y = höhe - this.Height;
+
+            this.Location = new Point(x / 2, y / 2);
 
 
             this.BackgroundImage = Image.FromFile("images/wiese.png");
