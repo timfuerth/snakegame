@@ -86,7 +86,12 @@ namespace snakegame
 
         private void timerSnake_Tick(object sender, EventArgs e)
         {
-            sh.bewegen(direction);
+            if (!sh.bewegen(direction))
+            {
+                timerSnake.Stop();
+                MessageBox.Show("Game Over");
+            }
+                
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
