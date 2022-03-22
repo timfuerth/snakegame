@@ -34,9 +34,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pBclose = new System.Windows.Forms.PictureBox();
             this.timerSnake = new System.Windows.Forms.Timer(this.components);
+            this.pBminus = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBminus)).BeginInit();
             this.SuspendLayout();
             // 
             // pBschlangenkopf
@@ -51,6 +53,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.pBminus);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pBclose);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -81,7 +84,18 @@
             // 
             // timerSnake
             // 
-            this.timerSnake.Interval = 10;
+            this.timerSnake.Interval = 200;
+            this.timerSnake.Tick += new System.EventHandler(this.timerSnake_Tick);
+            // 
+            // pBminus
+            // 
+            this.pBminus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pBminus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pBminus.Location = new System.Drawing.Point(741, 3);
+            this.pBminus.Name = "pBminus";
+            this.pBminus.Size = new System.Drawing.Size(25, 25);
+            this.pBminus.TabIndex = 2;
+            this.pBminus.TabStop = false;
             // 
             // Form1
             // 
@@ -94,10 +108,12 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBminus)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -109,6 +125,7 @@
         private System.Windows.Forms.PictureBox pBclose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timerSnake;
+        private System.Windows.Forms.PictureBox pBminus;
     }
 }
 
