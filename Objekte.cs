@@ -18,6 +18,7 @@ namespace snakegame
             this.bild = bild;
             this.x = x;
             this.y = y;
+            bild.Location = new System.Drawing.Point(x, y);
         }
     }
 }
