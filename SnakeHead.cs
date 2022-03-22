@@ -26,7 +26,7 @@ namespace snakegame
             else if (direction == "o")
                 x += 50;
 
-            if (x<0 || x>800 || y<50||y>800)
+            if (x<0 || x>=800 || y<50||y>=800)
                 return false;
 
             bild.Location = new Point(x, y);
