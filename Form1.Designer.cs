@@ -79,6 +79,10 @@
             this.pBclose.TabStop = false;
             this.pBclose.Click += new System.EventHandler(this.pBclose_Click);
             // 
+            // timerSnake
+            // 
+            this.timerSnake.Interval = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
