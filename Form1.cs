@@ -102,19 +102,23 @@ namespace snakegame
         {
             if (e.KeyValue == 37)
             {
-                direction = "w";
+                if (direction != "o")
+                    direction = "w";
             }
             if (e.KeyValue == 38)
             {
-                direction = "n";
+                if (direction != "s")
+                    direction = "n";
             }
             if (e.KeyValue == 39)
             {
-                direction = "o";
+                if (direction != "w")
+                    direction = "o";
             }
             if (e.KeyValue == 40)
             {
-                direction = "s";
+                if (direction != "n")
+                    direction = "s";
             }
         }
 
