@@ -139,5 +139,13 @@ namespace snakegame
             direction = "";
             timerSnake.Start();
         }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            Hide();
+            LoginForm loginform = new LoginForm();
+            loginform.Closed += (s, args) => Close();
+            loginform.Show();
+        }
     }
 }

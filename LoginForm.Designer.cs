@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pBminus = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pBminus = new System.Windows.Forms.PictureBox();
             this.pBclose = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBminus)).BeginInit();
@@ -48,16 +48,6 @@
             this.panel1.Size = new System.Drawing.Size(800, 50);
             this.panel1.TabIndex = 2;
             // 
-            // pBminus
-            // 
-            this.pBminus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pBminus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pBminus.Location = new System.Drawing.Point(738, 9);
-            this.pBminus.Name = "pBminus";
-            this.pBminus.Size = new System.Drawing.Size(25, 25);
-            this.pBminus.TabIndex = 2;
-            this.pBminus.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -67,6 +57,16 @@
             this.label1.Size = new System.Drawing.Size(284, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "snakegame - Login/Register";
+            // 
+            // pBminus
+            // 
+            this.pBminus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pBminus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pBminus.Location = new System.Drawing.Point(738, 9);
+            this.pBminus.Name = "pBminus";
+            this.pBminus.Size = new System.Drawing.Size(25, 25);
+            this.pBminus.TabIndex = 2;
+            this.pBminus.TabStop = false;
             // 
             // pBclose
             // 

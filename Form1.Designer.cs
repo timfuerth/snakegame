@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pBschlangenkopf = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btLogin = new System.Windows.Forms.Button();
             this.pBminus = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pBclose = new System.Windows.Forms.PictureBox();
@@ -58,6 +59,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btLogin);
             this.panel1.Controls.Add(this.pBminus);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pBclose);
@@ -65,6 +67,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 50);
             this.panel1.TabIndex = 1;
+            // 
+            // btLogin
+            // 
+            this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogin.Location = new System.Drawing.Point(312, 3);
+            this.btLogin.Name = "btLogin";
+            this.btLogin.Size = new System.Drawing.Size(181, 38);
+            this.btLogin.TabIndex = 3;
+            this.btLogin.Text = "LOGIN/REGISTER";
+            this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // pBminus
             // 
@@ -173,6 +186,7 @@
         private System.Windows.Forms.PictureBox pBrestart;
         private System.Windows.Forms.Label lbRestart;
         private System.Windows.Forms.Panel panelRestart;
+        private System.Windows.Forms.Button btLogin;
     }
 }
 
