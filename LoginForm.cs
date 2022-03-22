@@ -32,6 +32,8 @@ namespace snakegame
             this.BackgroundImage = Image.FromFile("images/wiese.png");
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBminus.BackgroundImage = Image.FromFile("images/minus.png");
+
+            //test
         }
     }
 }
