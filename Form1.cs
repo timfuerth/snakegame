@@ -25,7 +25,7 @@ namespace snakegame
         {
             this.MinimumSize = new Size(800, 800); 
             this.MaximumSize = new Size(800, 800);
-
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             // Start - Position
             int x = Screen.PrimaryScreen.Bounds.Width - this.Width;
             int y = Screen.PrimaryScreen.Bounds.Height - this.Height;
@@ -100,26 +100,7 @@ namespace snakegame
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == 37)
-            {
-                if (direction != "o")
-                    direction = "w";
-            }
-            if (e.KeyValue == 38)
-            {
-                if (direction != "s")
-                    direction = "n";
-            }
-            if (e.KeyValue == 39)
-            {
-                if (direction != "w")
-                    direction = "o";
-            }
-            if (e.KeyValue == 40)
-            {
-                if (direction != "n")
-                    direction = "s";
-            }
+            
         }
 
         private void pBminus_Click(object sender, EventArgs e)
@@ -146,6 +127,37 @@ namespace snakegame
             LoginForm loginform = new LoginForm();
             loginform.Closed += (s, args) => Close();
             loginform.Show();
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show("test");
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == Keys.Left || keyData == Keys.A)
+            {
+                if (direction != "o")
+                    direction = "w";
+            }
+            if (keyData == Keys.Up || keyData == Keys.W)
+            {
+                if (direction != "s")
+                    direction = "n";
+            }
+            if (keyData == Keys.Right || keyData == Keys.D)
+            {
+                if (direction != "w")
+                    direction = "o";
+            }
+            if (keyData == Keys.Down || keyData == Keys.S)
+            {
+                if (direction != "n")
+                    direction = "s";
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
