@@ -19,14 +19,18 @@ namespace snakegame
             InitializeComponent();
         }
 
-
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(800, 800); 
             this.MaximumSize = new Size(800, 800);
 
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+
             this.BackgroundImage = Image.FromFile("images/wiese.png");
+            pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBschlangenkopf.BackColor = Color.Red;
         }
 
@@ -69,6 +73,11 @@ namespace snakegame
             reader.Close();
             con.Close();
 
+        }
+
+        private void pBclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
