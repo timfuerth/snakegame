@@ -131,9 +131,9 @@
             this.panelRestart.BackColor = System.Drawing.Color.Transparent;
             this.panelRestart.Controls.Add(this.lbRestart);
             this.panelRestart.Controls.Add(this.pBrestart);
-            this.panelRestart.Location = new System.Drawing.Point(0, 50);
+            this.panelRestart.Location = new System.Drawing.Point(0, 85);
             this.panelRestart.Name = "panelRestart";
-            this.panelRestart.Size = new System.Drawing.Size(800, 753);
+            this.panelRestart.Size = new System.Drawing.Size(800, 718);
             this.panelRestart.TabIndex = 5;
             this.panelRestart.Visible = false;
             // 
