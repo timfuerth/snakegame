@@ -96,6 +96,7 @@
             this.pBminus.Size = new System.Drawing.Size(25, 25);
             this.pBminus.TabIndex = 2;
             this.pBminus.TabStop = false;
+            this.pBminus.Click += new System.EventHandler(this.pBminus_Click);
             // 
             // Form1
             // 

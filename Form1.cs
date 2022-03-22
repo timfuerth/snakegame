@@ -108,5 +108,10 @@ namespace snakegame
                 direction = "s";
             }
         }
+
+        private void pBminus_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
