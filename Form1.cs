@@ -27,11 +27,8 @@ namespace snakegame
             this.MaximumSize = new Size(800, 800);
 
             // Start - Position
-            int breite = Screen.PrimaryScreen.Bounds.Width;
-            int höhe = Screen.PrimaryScreen.Bounds.Height;
-
-            int x = breite - this.Width;
-            int y = höhe - this.Height;
+            int x = Screen.PrimaryScreen.Bounds.Width - this.Width;
+            int y = Screen.PrimaryScreen.Bounds.Height - this.Height;
 
             this.Location = new Point(x / 2, y / 2);
 
@@ -39,10 +36,10 @@ namespace snakegame
             this.BackgroundImage = Image.FromFile("images/wiese.png");
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBminus.BackgroundImage = Image.FromFile("images/minus.png");
+            pBrestart.BackgroundImage = Image.FromFile("images/restart.png");
             pBschlangenkopf.BackColor = Color.Red;
 
-            sh = new SnakeHead(pBschlangenkopf, 0, 50);
-            timerSnake.Start();
+            start();
         }
 
         private void DatenbankAuslesen()
@@ -96,7 +93,7 @@ namespace snakegame
             if (!sh.bewegen(direction))
             {
                 timerSnake.Stop();
-                MessageBox.Show("Game Over");
+                panelRestart.Show();
             }
                 
         }
@@ -124,6 +121,19 @@ namespace snakegame
         private void pBminus_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pBrestart_Click(object sender, EventArgs e)
+        {
+            panelRestart.Hide();
+            start();
+        }
+
+        private void start()
+        {
+            sh = new SnakeHead(pBschlangenkopf, 0, 50);
+            direction = "";
+            timerSnake.Start();
         }
     }
 }

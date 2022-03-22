@@ -134,6 +134,7 @@
   <ItemGroup>
     <Content Include="bin\Debug\images\error-icon2.png" />
     <Content Include="bin\Debug\images\minus.png" />
+    <Content Include="bin\Debug\images\restart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
