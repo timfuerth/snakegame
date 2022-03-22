@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pBschlangenkopf = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pBclose = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pBclose = new System.Windows.Forms.PictureBox();
+            this.timerSnake = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).BeginInit();
@@ -40,7 +42,7 @@
             // pBschlangenkopf
             // 
             this.pBschlangenkopf.Location = new System.Drawing.Point(0, 50);
-            this.pBschlangenkopf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pBschlangenkopf.Margin = new System.Windows.Forms.Padding(2);
             this.pBschlangenkopf.Name = "pBschlangenkopf";
             this.pBschlangenkopf.Size = new System.Drawing.Size(50, 50);
             this.pBschlangenkopf.TabIndex = 0;
@@ -56,6 +58,16 @@
             this.panel1.Size = new System.Drawing.Size(800, 50);
             this.panel1.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 26);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "snakegame";
+            // 
             // pBclose
             // 
             this.pBclose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -66,16 +78,6 @@
             this.pBclose.TabIndex = 0;
             this.pBclose.TabStop = false;
             this.pBclose.Click += new System.EventHandler(this.pBclose_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 26);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "snakegame";
             // 
             // Form1
             // 
@@ -102,6 +104,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pBclose;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timerSnake;
     }
 }
 
