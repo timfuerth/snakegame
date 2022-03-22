@@ -35,10 +35,12 @@
             this.pBclose = new System.Windows.Forms.PictureBox();
             this.timerSnake = new System.Windows.Forms.Timer(this.components);
             this.pBminus = new System.Windows.Forms.PictureBox();
+            this.pBfrucht = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBminus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBfrucht)).BeginInit();
             this.SuspendLayout();
             // 
             // pBschlangenkopf
@@ -98,11 +100,21 @@
             this.pBminus.TabStop = false;
             this.pBminus.Click += new System.EventHandler(this.pBminus_Click);
             // 
+            // pBfrucht
+            // 
+            this.pBfrucht.Location = new System.Drawing.Point(134, 148);
+            this.pBfrucht.Margin = new System.Windows.Forms.Padding(2);
+            this.pBfrucht.Name = "pBfrucht";
+            this.pBfrucht.Size = new System.Drawing.Size(25, 25);
+            this.pBfrucht.TabIndex = 2;
+            this.pBfrucht.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 800);
+            this.Controls.Add(this.pBfrucht);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pBschlangenkopf);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -115,6 +127,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBminus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBfrucht)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -127,6 +140,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timerSnake;
         private System.Windows.Forms.PictureBox pBminus;
+        private System.Windows.Forms.PictureBox pBfrucht;
     }
 }
 
