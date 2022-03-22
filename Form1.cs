@@ -18,8 +18,8 @@ namespace snakegame
         {
             InitializeComponent();
         }
-
-        
+        string direction;
+        SnakeHead sh;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -32,6 +32,9 @@ namespace snakegame
             this.BackgroundImage = Image.FromFile("images/wiese.png");
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBschlangenkopf.BackColor = Color.Red;
+
+            sh = new SnakeHead(pBschlangenkopf, 0, 50);
+            timerSnake.Start();
         }
 
         private void DatenbankAuslesen()
@@ -78,6 +81,31 @@ namespace snakegame
         private void pBclose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void timerSnake_Tick(object sender, EventArgs e)
+        {
+            sh.bewegen(direction);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 37)
+            {
+                direction = "w";
+            }
+            if (e.KeyValue == 38)
+            {
+                direction = "n";
+            }
+            if (e.KeyValue == 39)
+            {
+                direction = "o";
+            }
+            if (e.KeyValue == 40)
+            {
+                direction = "s";
+            }
         }
     }
 }

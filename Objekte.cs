@@ -7,15 +7,15 @@ using System.Windows.Forms;
 
 namespace snakegame
 {
-    abstract internal class Objekte
+    abstract public class Objekte
     {
-        PictureBox Abbildung;
-        int x;
-        int y;
+        public PictureBox bild;
+        public int x;
+        public int y;
 
         public Objekte(PictureBox bild, int x, int y)
         {
-            Abbildung = bild;
+            this.bild = bild;
             this.x = x;
             this.y = y;
         }

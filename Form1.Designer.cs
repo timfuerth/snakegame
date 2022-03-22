@@ -79,6 +79,10 @@
             this.pBclose.TabStop = false;
             this.pBclose.Click += new System.EventHandler(this.pBclose_Click);
             // 
+            // timerSnake
+            // 
+            this.timerSnake.Tick += new System.EventHandler(this.timerSnake_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +94,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
