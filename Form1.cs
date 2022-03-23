@@ -21,7 +21,7 @@ namespace snakegame
         string direction;
         SnakeHead sh;
         public static Benutzer Spieler1;
-        public static Benutzer OffPlayer;
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             //Form1 Größe:
@@ -43,7 +43,11 @@ namespace snakegame
             pBrestart.BringToFront();
             pbFruit.SendToBack();
             pbFruit.BackgroundImage = Image.FromFile("images/melone.png");
-            OffPlayer = new Benutzer("nicht angemeldet", "0", "0", "0");
+            if(Spieler1 == null)
+            {
+                Spieler1 = new Benutzer("nicht angemeldet", "0", "0", "0");
+            }
+            
             start();
         }
 
@@ -93,9 +97,9 @@ namespace snakegame
             if (pbFruit.Location != sh.Kollission(pbFruit).Location)
             {
                 pbFruit = sh.Kollission(pbFruit);
-                tbAktuellerSpielstand.Text = OffPlayer.spielt().ToString();
-                tbRekord.Text = OffPlayer.rekordAktualisieren().ToString();
-                SnakeHead.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
+                tbAktuellerSpielstand.Text = Spieler1.spielt().ToString();
+                tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
+                sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
             }
             
             
@@ -135,7 +139,7 @@ namespace snakegame
             SnakeHead.schlangenListe.Clear();
             sh = new SnakeHead(pBschlangenkopf);
             direction = "";
-            tbAktuellerSpielstand.Text = OffPlayer.punkteZuruecksetzen().ToString();
+            tbAktuellerSpielstand.Text = Spieler1.punkteZuruecksetzen().ToString();
             timerSnake.Start();
         }
 
