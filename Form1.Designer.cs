@@ -33,20 +33,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btLogin = new System.Windows.Forms.Button();
             this.timerSnake = new System.Windows.Forms.Timer(this.components);
-            this.lbRestart = new System.Windows.Forms.Label();
             this.panelRestart = new System.Windows.Forms.Panel();
+            this.pbFruit = new System.Windows.Forms.PictureBox();
             this.pBrestart = new System.Windows.Forms.PictureBox();
             this.pBminus = new System.Windows.Forms.PictureBox();
             this.pBclose = new System.Windows.Forms.PictureBox();
             this.pBschlangenkopf = new System.Windows.Forms.PictureBox();
-            this.pbFruit = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panelRestart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBrestart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBminus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,27 +77,25 @@
             this.timerSnake.Interval = 200;
             this.timerSnake.Tick += new System.EventHandler(this.timerSnake_Tick);
             // 
-            // lbRestart
-            // 
-            this.lbRestart.AutoSize = true;
-            this.lbRestart.BackColor = System.Drawing.Color.Transparent;
-            this.lbRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRestart.Location = new System.Drawing.Point(356, 98);
-            this.lbRestart.Name = "lbRestart";
-            this.lbRestart.Size = new System.Drawing.Size(81, 25);
-            this.lbRestart.TabIndex = 4;
-            this.lbRestart.Text = "Restart";
-            // 
             // panelRestart
             // 
             this.panelRestart.BackColor = System.Drawing.Color.Transparent;
-            this.panelRestart.Controls.Add(this.lbRestart);
             this.panelRestart.Controls.Add(this.pBrestart);
             this.panelRestart.Location = new System.Drawing.Point(0, 85);
             this.panelRestart.Name = "panelRestart";
             this.panelRestart.Size = new System.Drawing.Size(800, 718);
             this.panelRestart.TabIndex = 5;
             this.panelRestart.Visible = false;
+            // 
+            // pbFruit
+            // 
+            this.pbFruit.BackColor = System.Drawing.Color.Transparent;
+            this.pbFruit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbFruit.Location = new System.Drawing.Point(250, 300);
+            this.pbFruit.Name = "pbFruit";
+            this.pbFruit.Size = new System.Drawing.Size(50, 50);
+            this.pbFruit.TabIndex = 5;
+            this.pbFruit.TabStop = false;
             // 
             // pBrestart
             // 
@@ -107,7 +104,7 @@
             this.pBrestart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pBrestart.Location = new System.Drawing.Point(171, 77);
             this.pBrestart.Name = "pBrestart";
-            this.pBrestart.Size = new System.Drawing.Size(444, 447);
+            this.pBrestart.Size = new System.Drawing.Size(444, 444);
             this.pBrestart.TabIndex = 3;
             this.pBrestart.TabStop = false;
             this.pBrestart.Click += new System.EventHandler(this.pBrestart_Click);
@@ -136,22 +133,16 @@
             // 
             // pBschlangenkopf
             // 
-            this.pBschlangenkopf.Location = new System.Drawing.Point(0, 50);
+            this.pBschlangenkopf.BackColor = System.Drawing.Color.Transparent;
+            this.pBschlangenkopf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pBschlangenkopf.ErrorImage = null;
+            this.pBschlangenkopf.Image = global::snakegame.Properties.Resources.rechts_head_tranparent;
+            this.pBschlangenkopf.Location = new System.Drawing.Point(400, 400);
             this.pBschlangenkopf.Margin = new System.Windows.Forms.Padding(2);
             this.pBschlangenkopf.Name = "pBschlangenkopf";
             this.pBschlangenkopf.Size = new System.Drawing.Size(50, 50);
             this.pBschlangenkopf.TabIndex = 0;
             this.pBschlangenkopf.TabStop = false;
-            // 
-            // pbFruit
-            // 
-            this.pbFruit.BackColor = System.Drawing.Color.Transparent;
-            this.pbFruit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbFruit.Location = new System.Drawing.Point(250, 300);
-            this.pbFruit.Name = "pbFruit";
-            this.pbFruit.Size = new System.Drawing.Size(50, 50);
-            this.pbFruit.TabIndex = 5;
-            this.pbFruit.TabStop = false;
             // 
             // Form1
             // 
@@ -167,15 +158,13 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panelRestart.ResumeLayout(false);
-            this.panelRestart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBrestart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBminus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,7 +177,6 @@
         private System.Windows.Forms.Timer timerSnake;
         private System.Windows.Forms.PictureBox pBminus;
         private System.Windows.Forms.PictureBox pBrestart;
-        private System.Windows.Forms.Label lbRestart;
         private System.Windows.Forms.Panel panelRestart;
         private System.Windows.Forms.Button btLogin;
         private System.Windows.Forms.PictureBox pbFruit;

@@ -105,6 +105,11 @@
     <Compile Include="Objekte.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Schlange.cs" />
     <Compile Include="SnakeHead.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -115,14 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -145,15 +145,19 @@
     <Content Include="bin\Debug\images\avocado.png" />
     <Content Include="bin\Debug\images\erdbeere.png" />
     <Content Include="bin\Debug\images\error-icon2.png" />
+    <Content Include="bin\Debug\images\links_head_tranparent.png" />
+    <Content Include="bin\Debug\images\oben_head_tranparent.png" />
     <Content Include="bin\Debug\images\honigmelone.png" />
     <Content Include="bin\Debug\images\kiwi.png" />
     <Content Include="bin\Debug\images\kokosnuss.png" />
     <Content Include="bin\Debug\images\melone.png" />
     <Content Include="bin\Debug\images\minus.png" />
     <Content Include="bin\Debug\images\orange.png" />
+    <Content Include="bin\Debug\images\rechts_head_tranparent.png" />
     <Content Include="bin\Debug\images\restart.png" />
     <Content Include="bin\Debug\images\snake.ico" />
     <Content Include="bin\Debug\images\snake.png" />
+    <Content Include="bin\Debug\images\unten_head_tranparent.png" />
     <Content Include="bin\Debug\images\zitrone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

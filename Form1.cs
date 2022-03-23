@@ -20,13 +20,13 @@ namespace snakegame
         }
         string direction;
         SnakeHead sh;
-        string[] fruitname = { "honigmelone", "kiwi", "orange", "apfel", "melone", "avocado", "zitrone", "erbeere", "kokosnuss" };
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             //Form1 Größe:
             this.MinimumSize = new Size(800, 800); 
             this.MaximumSize = new Size(800, 800);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            
             
             // Start - Position
             int x = Screen.PrimaryScreen.Bounds.Width - this.Width;
@@ -40,8 +40,11 @@ namespace snakegame
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBminus.BackgroundImage = Image.FromFile("images/minus.png");
             pBrestart.BackgroundImage = Image.FromFile("images/restart.png");
-            pBschlangenkopf.BackColor = Color.Red;
-
+            //pBschlangenkopf.Image = Image.FromFile("images/head_transparent");
+            //pBschlangenkopf.BackColor = Color.Red;
+            pBschlangenkopf.BringToFront();
+            pBrestart.BringToFront();
+            pbFruit.SendToBack();
             pbFruit.BackgroundImage = Image.FromFile("images/melone.png");
             start();
         }
@@ -92,19 +95,21 @@ namespace snakegame
             this.Close();
         }
 
+        
+
+
+
         private void timerSnake_Tick(object sender, EventArgs e)
         {
+            pbFruit = sh.Kollission(pbFruit);
             if (!sh.bewegen(direction))
             {
                 timerSnake.Stop();
                 panelRestart.Show();
+                pBschlangenkopf.Hide();
+                pbFruit.Hide();
             }
                 
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            
         }
 
         private void pBminus_Click(object sender, EventArgs e)
@@ -115,12 +120,14 @@ namespace snakegame
         private void pBrestart_Click(object sender, EventArgs e)
         {
             panelRestart.Hide();
+            pBschlangenkopf.Show();
+            pbFruit.Show();
             start();
         }
 
         private void start()
         {
-            sh = new SnakeHead(pBschlangenkopf, 0, 50);
+            sh = new SnakeHead(pBschlangenkopf);
             direction = "";
             timerSnake.Start();
         }
@@ -134,10 +141,7 @@ namespace snakegame
             
         }
 
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MessageBox.Show("test");
-        }
+       
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -145,22 +149,40 @@ namespace snakegame
             if (keyData == Keys.Left || keyData == Keys.A)
             {
                 if (direction != "o")
+                {
                     direction = "w";
+                    pBschlangenkopf.Image = Image.FromFile("images/links_head_tranparent.png");
+                }
+                    
             }
             if (keyData == Keys.Up || keyData == Keys.W)
             {
                 if (direction != "s")
+                {
                     direction = "n";
+                    pBschlangenkopf.Image = Image.FromFile("images/oben_head_tranparent.png");
+                }
+                    
+
             }
             if (keyData == Keys.Right || keyData == Keys.D)
             {
                 if (direction != "w")
+                {
                     direction = "o";
+                    pBschlangenkopf.Image = Image.FromFile("images/rechts_head_tranparent.png");
+                }
+                    
+
             }
             if (keyData == Keys.Down || keyData == Keys.S)
             {
                 if (direction != "n")
+                {
                     direction = "s";
+                    pBschlangenkopf.Image = Image.FromFile("images/unten_head_tranparent.png");
+                }
+                    
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }

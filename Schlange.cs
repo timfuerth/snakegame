@@ -9,9 +9,11 @@ namespace snakegame
 {
     internal class Schlange : Objekte
     {
-        public Schlange(PictureBox bild, int x, int y) : base(bild, x, y)
+        public Schlange(PictureBox bild) : base(bild)
         {
 
         }
+
+
     }
 }
