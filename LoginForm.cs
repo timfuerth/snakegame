@@ -56,12 +56,10 @@ namespace snakegame
                     return;
                 }
                 Registrieren(tbRegisterUser.Text);
-                //commandString = 
             }
-
-
-            
         }
+        
+        
 
         private void Registrieren(string user)
         {
@@ -90,10 +88,12 @@ namespace snakegame
             }
             reader.Close();
             con.Close();
-            cmd.CommandText = $"INSERT INTO `benutzer`(`Vorname`, `Nachname`, `Benutzername`, `Passwort`) VALUES ('{tbVorname.Text}','{tbNachname.Text}','{tbRegisterUser.Text}','{tbRegisterPasswort}')";
+            cmd.CommandText = $"INSERT INTO `benutzer`(`Vorname`, `Nachname`, `Benutzername`, `Passwort`) VALUES ('{tbVorname.Text}','{tbNachname.Text}','{tbRegisterUser.Text}','{tbRegisterPasswort.Text}')";
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
+            MessageBox.Show("Erfolgreich registriert!");
+            GoBack();
         }
 
         private void LoginAuslesen()
@@ -115,7 +115,8 @@ namespace snakegame
             while (reader.Read())
             {
                 correct = true;
-                MessageBox.Show(reader[1].ToString());
+                MessageBox.Show("Erfolgreich angemeldet");
+                GoBack();
             }
             if (!correct)
                 MessageBox.Show("Passwort oder Benutzername ist falsch!");
@@ -180,34 +181,39 @@ namespace snakegame
             this.Refresh();
             if (activeScreen == "Anmeldung")
             {
-                activeScreen = "Registrierung";
-                lbRegister.Text = "Stattdessen anmelden";
-                
-                panelLogin.Hide();
-                panelRegister.Show();
-
-                panelButtons.Top = 585;
-                btLogin.Text = "REGISTRIEREN";
-                
-                lbLoginText.Text = "Registrierung";
-                lbLoginText2.Text = "Registriren bei SnakeGame";
+                RegisterSetup();
             }
             else
-            {
-                panelLogin.Show();
-                panelRegister.Hide();
-
-                activeScreen = "Anmeldung";
-                lbRegister.Text = "Neues Konto erstellen";
-
-                panelButtons.Top = 425;
-                btLogin.Text = "LOGIN";
-                lbLoginText.Text = "Registrierung";
-                lbLoginText2.Text = "Registriren bei SnakeGame";
-            }
+                LoginSetup();
             
         }
+        private void RegisterSetup()
+        {
+            activeScreen = "Registrierung";
+            lbRegister.Text = "Stattdessen anmelden";
 
+            panelLogin.Hide();
+            panelRegister.Show();
+
+            panelButtons.Top = 585;
+            btLogin.Text = "REGISTRIEREN";
+
+            lbLoginText.Text = "Registrierung";
+            lbLoginText2.Text = "Registriren bei SnakeGame";
+        }
+        private void LoginSetup()
+        {
+            panelLogin.Show();
+            panelRegister.Hide();
+
+            activeScreen = "Anmeldung";
+            lbRegister.Text = "Neues Konto erstellen";
+
+            panelButtons.Top = 425;
+            btLogin.Text = "LOGIN";
+            lbLoginText.Text = "Registrierung";
+            lbLoginText2.Text = "Registriren bei SnakeGame";
+        }
         private void panelRegister_Paint(object sender, PaintEventArgs e)
         {
             if (tbActive.Tag != null)
