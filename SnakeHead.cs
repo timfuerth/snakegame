@@ -25,7 +25,7 @@ namespace snakegame
         public bool bewegen(string direction)
         {
             int oldX = bild.Left;
-            int oldY = bild.Left;
+            int oldY = bild.Top;
 
             if (direction == "n")
                 y -= defaultsize;
@@ -40,6 +40,15 @@ namespace snakegame
                 return false;
 
             bild.Location = new Point(x, y);
+            if(schlangenListe.Count > 0)
+            {
+                
+                for (int i = schlangenListe.Count; i > 1; i--)
+                {
+                    schlangenListe[i-1].bild.Location = schlangenListe[i - 2].bild.Location;
+                }
+                schlangenListe[0].bild.Location = new Point(oldX, oldY);
+            }
             return true;
         }
 
