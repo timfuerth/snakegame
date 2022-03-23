@@ -26,17 +26,16 @@ namespace snakegame
         public int spielt()
         {
             aktuellePunktezahl++;
-            
-            return aktuellePunktezahl;
-        }
-
-        public int rekordErmitteln()
-        {
             if (aktuellePunktezahl > Rekord)
             {
                 Rekord = aktuellePunktezahl;
             }
-            return Rekord;
+           
+            return aktuellePunktezahl;
         }
+
+        
+            
+        
     }
 }
