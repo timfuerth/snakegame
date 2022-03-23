@@ -130,6 +130,7 @@ namespace snakegame
             LoginForm loginform = new LoginForm();
             loginform.Closed += (s, args) => Close();
             loginform.Show();
+            
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
