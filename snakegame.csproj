@@ -154,6 +154,7 @@
     <Content Include="bin\Debug\images\melone.png" />
     <Content Include="bin\Debug\images\minus.png" />
     <Content Include="bin\Debug\images\orange.png" />
+    <Content Include="bin\Debug\images\pokal.png" />
     <Content Include="bin\Debug\images\rechts_head_tranparent.png" />
     <Content Include="bin\Debug\images\restart.png" />
     <Content Include="bin\Debug\images\snake.ico" />

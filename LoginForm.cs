@@ -116,6 +116,7 @@ namespace snakegame
             {
                 correct = true;
                 MessageBox.Show("Erfolgreich angemeldet");
+                Benutzer Spieler1 = new Benutzer(reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
                 GoBack();
             }
             if (!correct)
