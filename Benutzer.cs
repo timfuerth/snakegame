@@ -23,18 +23,27 @@ namespace snakegame
             passwort = pwd;
         }
 
+        public int punkteZuruecksetzen()
+        {
+            aktuellePunktezahl = 0;
+            return aktuellePunktezahl;
+        }
+
         public int spielt()
         {
+            
             aktuellePunktezahl++;
+            return aktuellePunktezahl;
+        }
+
+        public int rekordAktualisieren()
+        {
             if (aktuellePunktezahl > Rekord)
             {
                 Rekord = aktuellePunktezahl;
             }
-           
-            return aktuellePunktezahl;
+            return Rekord;
         }
-
-        
             
         
     }
