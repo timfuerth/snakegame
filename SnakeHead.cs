@@ -10,7 +10,7 @@ namespace snakegame
 {
     public class SnakeHead : Objekte
     {
-        public List<Schlange> schlangenListe;
+        static public List<Schlange> schlangenListe = new List<Schlange>();
         public Random rand = new Random();
         int defaultsize = 50;
         int x = 400;
@@ -19,7 +19,7 @@ namespace snakegame
 
         public SnakeHead(PictureBox bild) : base(bild)
         {
-            schlangenListe = new List<Schlange>();
+            
         }
 
         public bool bewegen(string direction)

@@ -95,7 +95,7 @@ namespace snakegame
                 pbFruit = sh.Kollission(pbFruit);
                 tbAktuellerSpielstand.Text = OffPlayer.spielt().ToString();
                 tbRekord.Text = OffPlayer.rekordAktualisieren().ToString();
-                sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
+                SnakeHead.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
             }
             
             
@@ -128,6 +128,11 @@ namespace snakegame
 
         private void start()
         {
+            foreach (Schlange body in SnakeHead.schlangenListe)
+            {
+                this.Controls.Remove(body.bild);
+            }
+            SnakeHead.schlangenListe.Clear();
             sh = new SnakeHead(pBschlangenkopf);
             direction = "";
             tbAktuellerSpielstand.Text = OffPlayer.punkteZuruecksetzen().ToString();
