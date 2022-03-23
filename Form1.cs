@@ -99,7 +99,7 @@ namespace snakegame
                 pbFruit = sh.Kollission(pbFruit);
                 tbAktuellerSpielstand.Text = Spieler1.spielt().ToString();
                 tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
-                sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
+                SnakeHead.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
             }
             
             
