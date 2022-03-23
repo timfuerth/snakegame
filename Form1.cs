@@ -93,8 +93,8 @@ namespace snakegame
             if (pbFruit.Location != sh.Kollission(pbFruit).Location)
             {
                 pbFruit = sh.Kollission(pbFruit);
-                tbAktuellerSpielstand.Text = Spieler1.spielt().ToString();
-                tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
+                tbAktuellerSpielstand.Text = OffPlayer.spielt().ToString();
+                tbRekord.Text = OffPlayer.rekordAktualisieren().ToString();
                 sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
             }
             
@@ -130,7 +130,7 @@ namespace snakegame
         {
             sh = new SnakeHead(pBschlangenkopf);
             direction = "";
-            tbAktuellerSpielstand.Text = Spieler1.punkteZuruecksetzen().ToString();
+            tbAktuellerSpielstand.Text = OffPlayer.punkteZuruecksetzen().ToString();
             timerSnake.Start();
         }
 
