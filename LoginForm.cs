@@ -17,6 +17,7 @@ namespace snakegame
             InitializeComponent();
         }
         bool FocusedLoginUser = false;
+        bool FocusedLoginPassword = false;
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(800, 800);
@@ -32,6 +33,7 @@ namespace snakegame
             this.BackgroundImage = Image.FromFile("images/wiese.png");
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBminus.BackgroundImage = Image.FromFile("images/minus.png");
+            pbLogo.BackgroundImage = Image.FromFile("images/snake.png");
         }
 
         private void btLogin_Click(object sender, EventArgs e)
@@ -54,32 +56,38 @@ namespace snakegame
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            FocusedLoginUser = true;
+            if (((RichTextBox)sender).Tag == "Login")
+                FocusedLoginUser = true;
+            else if (((RichTextBox)sender).Tag == "Password")
+                FocusedLoginPassword = true;
+    
             this.Refresh();
-        }
-
-        private void LoginForm_Paint(object sender, PaintEventArgs e)
-        {
-            
-
-            
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             if (FocusedLoginUser)
             {
-                tbLoginUser.BorderStyle = BorderStyle.None;
                 Pen p = new Pen(Color.Red);
                 Graphics g = e.Graphics;
                 int variance = 3;
                 g.DrawRectangle(p, new Rectangle(tbLoginUser.Location.X - variance+1, tbLoginUser.Location.Y - variance+1, tbLoginUser.Width + variance, tbLoginUser.Height + variance));
             }
+            else if (FocusedLoginPassword)
+            {
+                Pen p = new Pen(Color.Red);
+                Graphics g = e.Graphics;
+                int variance = 3;
+                g.DrawRectangle(p, new Rectangle(tbPassword.Location.X - variance + 1, tbPassword.Location.Y - variance + 1, tbPassword.Width + variance, tbPassword.Height + variance));
+            }
         }
 
         private void tbLoginUser_Leave(object sender, EventArgs e)
         {
-            FocusedLoginUser = false;
+            if (((RichTextBox)sender).Tag == "Login")
+                FocusedLoginUser = false;
+            else if (((RichTextBox)sender).Tag == "Password")
+                FocusedLoginPassword = false;
             this.Refresh();
         }
     }
