@@ -43,16 +43,16 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lbRegister = new System.Windows.Forms.Label();
             this.panelRegister = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tbRegisterPasswort = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.tbRegisterUser = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.tbRegisterPasswort2 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panelButtons = new System.Windows.Forms.Panel();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.tbNachname = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.tbVorname = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBminus)).BeginInit();
@@ -225,15 +225,15 @@
             // panelRegister
             // 
             this.panelRegister.BackColor = System.Drawing.Color.Transparent;
-            this.panelRegister.Controls.Add(this.richTextBox5);
+            this.panelRegister.Controls.Add(this.tbVorname);
             this.panelRegister.Controls.Add(this.label8);
-            this.panelRegister.Controls.Add(this.richTextBox4);
+            this.panelRegister.Controls.Add(this.tbNachname);
             this.panelRegister.Controls.Add(this.label7);
-            this.panelRegister.Controls.Add(this.richTextBox3);
+            this.panelRegister.Controls.Add(this.tbRegisterPasswort2);
             this.panelRegister.Controls.Add(this.label6);
-            this.panelRegister.Controls.Add(this.richTextBox1);
+            this.panelRegister.Controls.Add(this.tbRegisterPasswort);
             this.panelRegister.Controls.Add(this.label3);
-            this.panelRegister.Controls.Add(this.richTextBox2);
+            this.panelRegister.Controls.Add(this.tbRegisterUser);
             this.panelRegister.Controls.Add(this.label5);
             this.panelRegister.Location = new System.Drawing.Point(122, 265);
             this.panelRegister.Name = "panelRegister";
@@ -242,18 +242,18 @@
             this.panelRegister.Visible = false;
             this.panelRegister.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRegister_Paint);
             // 
-            // richTextBox1
+            // tbRegisterPasswort
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(15, 196);
-            this.richTextBox1.Multiline = false;
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(525, 35);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Tag = "Password";
-            this.richTextBox1.Text = "";
-            this.richTextBox1.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.richTextBox1.Leave += new System.EventHandler(this.tbLoginUser_Leave);
+            this.tbRegisterPasswort.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRegisterPasswort.Location = new System.Drawing.Point(15, 196);
+            this.tbRegisterPasswort.Multiline = false;
+            this.tbRegisterPasswort.Name = "tbRegisterPasswort";
+            this.tbRegisterPasswort.Size = new System.Drawing.Size(525, 35);
+            this.tbRegisterPasswort.TabIndex = 2;
+            this.tbRegisterPasswort.Tag = "Password";
+            this.tbRegisterPasswort.Text = "";
+            this.tbRegisterPasswort.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.tbRegisterPasswort.Leave += new System.EventHandler(this.tbLoginUser_Leave);
             // 
             // label3
             // 
@@ -266,18 +266,18 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Passwort";
             // 
-            // richTextBox2
+            // tbRegisterUser
             // 
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.Location = new System.Drawing.Point(15, 22);
-            this.richTextBox2.Multiline = false;
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(525, 35);
-            this.richTextBox2.TabIndex = 1;
-            this.richTextBox2.Tag = "Login";
-            this.richTextBox2.Text = "";
-            this.richTextBox2.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.richTextBox2.Leave += new System.EventHandler(this.tbLoginUser_Leave);
+            this.tbRegisterUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRegisterUser.Location = new System.Drawing.Point(15, 22);
+            this.tbRegisterUser.Multiline = false;
+            this.tbRegisterUser.Name = "tbRegisterUser";
+            this.tbRegisterUser.Size = new System.Drawing.Size(525, 35);
+            this.tbRegisterUser.TabIndex = 1;
+            this.tbRegisterUser.Tag = "Login";
+            this.tbRegisterUser.Text = "";
+            this.tbRegisterUser.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.tbRegisterUser.Leave += new System.EventHandler(this.tbLoginUser_Leave);
             // 
             // label5
             // 
@@ -290,18 +290,18 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Username";
             // 
-            // richTextBox3
+            // tbRegisterPasswort2
             // 
-            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.Location = new System.Drawing.Point(15, 255);
-            this.richTextBox3.Multiline = false;
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(525, 35);
-            this.richTextBox3.TabIndex = 10;
-            this.richTextBox3.Tag = "Password";
-            this.richTextBox3.Text = "";
-            this.richTextBox3.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.richTextBox3.Leave += new System.EventHandler(this.tbLoginUser_Leave);
+            this.tbRegisterPasswort2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRegisterPasswort2.Location = new System.Drawing.Point(15, 255);
+            this.tbRegisterPasswort2.Multiline = false;
+            this.tbRegisterPasswort2.Name = "tbRegisterPasswort2";
+            this.tbRegisterPasswort2.Size = new System.Drawing.Size(525, 35);
+            this.tbRegisterPasswort2.TabIndex = 10;
+            this.tbRegisterPasswort2.Tag = "Password";
+            this.tbRegisterPasswort2.Text = "";
+            this.tbRegisterPasswort2.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.tbRegisterPasswort2.Leave += new System.EventHandler(this.tbLoginUser_Leave);
             // 
             // label6
             // 
@@ -324,18 +324,18 @@
             this.panelButtons.Size = new System.Drawing.Size(173, 73);
             this.panelButtons.TabIndex = 11;
             // 
-            // richTextBox4
+            // tbNachname
             // 
-            this.richTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox4.Location = new System.Drawing.Point(15, 138);
-            this.richTextBox4.Multiline = false;
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(525, 35);
-            this.richTextBox4.TabIndex = 12;
-            this.richTextBox4.Tag = "Login";
-            this.richTextBox4.Text = "";
-            this.richTextBox4.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.richTextBox4.Leave += new System.EventHandler(this.tbLoginUser_Leave);
+            this.tbNachname.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNachname.Location = new System.Drawing.Point(15, 138);
+            this.tbNachname.Multiline = false;
+            this.tbNachname.Name = "tbNachname";
+            this.tbNachname.Size = new System.Drawing.Size(525, 35);
+            this.tbNachname.TabIndex = 12;
+            this.tbNachname.Tag = "Login";
+            this.tbNachname.Text = "";
+            this.tbNachname.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.tbNachname.Leave += new System.EventHandler(this.tbLoginUser_Leave);
             // 
             // label7
             // 
@@ -348,18 +348,18 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Nachname";
             // 
-            // richTextBox5
+            // tbVorname
             // 
-            this.richTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox5.Location = new System.Drawing.Point(15, 77);
-            this.richTextBox5.Multiline = false;
-            this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(525, 35);
-            this.richTextBox5.TabIndex = 14;
-            this.richTextBox5.Tag = "Login";
-            this.richTextBox5.Text = "";
-            this.richTextBox5.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.richTextBox5.Leave += new System.EventHandler(this.tbLoginUser_Leave);
+            this.tbVorname.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbVorname.Location = new System.Drawing.Point(15, 77);
+            this.tbVorname.Multiline = false;
+            this.tbVorname.Name = "tbVorname";
+            this.tbVorname.Size = new System.Drawing.Size(525, 35);
+            this.tbVorname.TabIndex = 14;
+            this.tbVorname.Tag = "Login";
+            this.tbVorname.Text = "";
+            this.tbVorname.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.tbVorname.Leave += new System.EventHandler(this.tbLoginUser_Leave);
             // 
             // label8
             // 
@@ -423,16 +423,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbRegister;
         private System.Windows.Forms.Panel panelRegister;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox tbRegisterPasswort2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox tbRegisterPasswort;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox tbRegisterUser;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panelButtons;
-        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox tbVorname;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.RichTextBox tbNachname;
         private System.Windows.Forms.Label label7;
     }
 }

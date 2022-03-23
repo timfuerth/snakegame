@@ -39,6 +39,65 @@ namespace snakegame
 
         private void btLogin_Click(object sender, EventArgs e)
         {
+            if (panelLogin.Visible)
+            {
+                if (tbLoginUser.Text == "" || tbPassword.Text == "")
+                {
+                    MessageBox.Show("Bitte alle Felder ausfüllen!", "SnakeGame", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                LoginAuslesen();
+            }
+            if (panelRegister.Visible)
+            {
+                if (tbRegisterUser.Text == "" || tbRegisterPasswort.Text == "" || tbRegisterPasswort2.Text == "" || tbVorname.Text == "" || tbNachname.Text == "")
+                {
+                    MessageBox.Show("Bitte alle Felder ausfüllen!", "SnakeGame", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Registrieren(tbRegisterUser.Text);
+                //commandString = 
+            }
+
+
+            
+        }
+
+        private void Registrieren(string user)
+        {
+            MySqlConnection con = new MySqlConnection();
+            MySqlCommand cmd = new MySqlCommand();
+            MySqlDataReader reader;
+
+            con.ConnectionString = "datasource = 127.0.0.1; port = 3306; username = root; password =; database = snakedb;";
+            cmd.Connection = con;
+
+
+            //Benutzer Datenbank auslesen:
+            cmd.CommandText = $"SELECT Benutzername from benutzer where benutzername = '{tbRegisterUser}'";
+
+            con.Open();
+            reader = cmd.ExecuteReader();
+            bool correct = false;
+            while (reader.Read())
+            {
+                correct = true;
+            }
+            if (correct)
+            {
+                MessageBox.Show("Dieser Benutzername ist bereits vergeben!", "SnakeGame", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            reader.Close();
+            con.Close();
+            cmd.CommandText = $"INSERT INTO `benutzer`(`Vorname`, `Nachname`, `Benutzername`, `Passwort`) VALUES ('{tbVorname.Text}','{tbNachname.Text}','{tbRegisterUser.Text}','{tbRegisterPasswort}')";
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        private void LoginAuslesen()
+        {
             MySqlConnection con = new MySqlConnection();
             MySqlCommand cmd = new MySqlCommand();
             MySqlDataReader reader;
@@ -63,21 +122,9 @@ namespace snakegame
             reader.Close();
             con.Close();
 
-
-            //Highscore Datenbank auslesen:
-            cmd.CommandText = "SELECT * from highscore";
-
-            con.Open();
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-            }
-
-            reader.Close();
-            con.Close();
         }
+
+
         private void GoBack()
         {
             Hide();
