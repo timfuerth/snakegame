@@ -141,11 +141,20 @@
     <None Include="bin\Debug\images\wiese.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\images\apfel.png" />
+    <Content Include="bin\Debug\images\avocado.png" />
+    <Content Include="bin\Debug\images\erdbeere.png" />
     <Content Include="bin\Debug\images\error-icon2.png" />
+    <Content Include="bin\Debug\images\honigmelone.png" />
+    <Content Include="bin\Debug\images\kiwi.png" />
+    <Content Include="bin\Debug\images\kokosnuss.png" />
+    <Content Include="bin\Debug\images\melone.png" />
     <Content Include="bin\Debug\images\minus.png" />
+    <Content Include="bin\Debug\images\orange.png" />
     <Content Include="bin\Debug\images\restart.png" />
     <Content Include="bin\Debug\images\snake.ico" />
     <Content Include="bin\Debug\images\snake.png" />
+    <Content Include="bin\Debug\images\zitrone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

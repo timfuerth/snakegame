@@ -20,7 +20,7 @@ namespace snakegame
         }
         string direction;
         SnakeHead sh;
-
+        string[] fruitname = { "honigmelone", "kiwi", "orange", "apfel", "melone", "avocado", "zitrone", "erbeere", "kokosnuss" };
         private void Form1_Load(object sender, EventArgs e)
         {
             //Form1 Größe:
@@ -42,6 +42,7 @@ namespace snakegame
             pBrestart.BackgroundImage = Image.FromFile("images/restart.png");
             pBschlangenkopf.BackColor = Color.Red;
 
+            pbFruit.BackgroundImage = Image.FromFile("images/melone.png");
             start();
         }
 
