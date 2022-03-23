@@ -10,15 +10,11 @@ namespace snakegame
     abstract public class Objekte
     {
         public PictureBox bild;
-        public int x;
-        public int y;
 
-        public Objekte(PictureBox bild, int x, int y)
+        public Objekte(PictureBox bild)
         {
             this.bild = bild;
-            this.x = x;
-            this.y = y;
-            bild.Location = new System.Drawing.Point(x, y);
+            
         }
     }
 }
