@@ -18,6 +18,7 @@ namespace snakegame
             InitializeComponent();
         }
         RichTextBox tbActive = new RichTextBox();
+        string activeScreen = "Anmeldung";
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(800, 800);
@@ -124,6 +125,54 @@ namespace snakegame
             tbActive.BorderStyle = BorderStyle.Fixed3D;
             tbActive.Tag = "";
             this.Refresh();
+        }
+
+        private void lbRegister_Click(object sender, EventArgs e)
+        {
+            tbActive.Tag = null;
+            this.Refresh();
+            if (activeScreen == "Anmeldung")
+            {
+                activeScreen = "Registrierung";
+                lbRegister.Text = "Stattdessen anmelden";
+                
+                panelLogin.Hide();
+                panelRegister.Show();
+
+                panelButtons.Top = 585;
+                btLogin.Text = "REGISTRIEREN";
+                
+                lbLoginText.Text = "Registrierung";
+                lbLoginText2.Text = "Registriren bei SnakeGame";
+            }
+            else
+            {
+                panelLogin.Show();
+                panelRegister.Hide();
+
+                activeScreen = "Anmeldung";
+                lbRegister.Text = "Neues Konto erstellen";
+
+                panelButtons.Top = 425;
+                btLogin.Text = "LOGIN";
+                lbLoginText.Text = "Registrierung";
+                lbLoginText2.Text = "Registriren bei SnakeGame";
+            }
+            
+        }
+
+        private void panelRegister_Paint(object sender, PaintEventArgs e)
+        {
+            if (tbActive.Tag != null)
+            {
+                if (tbActive.Tag.ToString() == "active")
+                {
+                    Pen p = new Pen(Color.Red);
+                    Graphics g = e.Graphics;
+                    int variance = 3;
+                    g.DrawRectangle(p, new Rectangle(tbActive.Location.X - variance + 1, tbActive.Location.Y - variance + 1, tbActive.Width + variance, tbActive.Height + variance));
+                }
+            }
         }
     }
 }
