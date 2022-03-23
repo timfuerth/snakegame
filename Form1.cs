@@ -28,20 +28,16 @@ namespace snakegame
             this.MaximumSize = new Size(800, 800);
             
             
-            // Start - Position
+            // Form - Position
             int x = Screen.PrimaryScreen.Bounds.Width - this.Width;
             int y = Screen.PrimaryScreen.Bounds.Height - this.Height;
 
             this.Location = new Point(x / 2, y / 2);
 
-            //this.Icon = new Icon("images/snake.ico");
-
             this.BackgroundImage = Image.FromFile("images/wiese.png");
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBminus.BackgroundImage = Image.FromFile("images/minus.png");
             pBrestart.BackgroundImage = Image.FromFile("images/restart.png");
-            //pBschlangenkopf.Image = Image.FromFile("images/head_transparent");
-            //pBschlangenkopf.BackColor = Color.Red;
             pBschlangenkopf.BringToFront();
             pBrestart.BringToFront();
             pbFruit.SendToBack();
@@ -90,15 +86,6 @@ namespace snakegame
 
         }
 
-        private void pBclose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        
-
-
-
         private void timerSnake_Tick(object sender, EventArgs e)
         {
             pbFruit = sh.Kollission(pbFruit);
@@ -111,7 +98,10 @@ namespace snakegame
             }
                 
         }
-
+        private void pBclose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void pBminus_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
