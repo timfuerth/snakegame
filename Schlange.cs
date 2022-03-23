@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace snakegame
 {
-    internal class Schlange : Objekte
+    public class Schlange : Objekte
     {
         public Schlange(PictureBox bild) : base(bild)
         {

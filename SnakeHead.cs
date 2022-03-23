@@ -10,7 +10,7 @@ namespace snakegame
 {
     public class SnakeHead : Objekte
     {
-
+        public List<Schlange> schlangenListe;
         public Random rand = new Random();
         int defaultsize = 50;
         int x = 400;
@@ -19,12 +19,14 @@ namespace snakegame
 
         public SnakeHead(PictureBox bild) : base(bild)
         {
-
+            schlangenListe = new List<Schlange>();
         }
 
         public bool bewegen(string direction)
         {
-            
+            int oldX = bild.Left;
+            int oldY = bild.Left;
+
             if (direction == "n")
                 y -= defaultsize;
             else if (direction == "s")
@@ -43,10 +45,6 @@ namespace snakegame
 
         public PictureBox Kollission(PictureBox fruit)
         {
-            
-                
-                
-            
             int xFruit = rand.Next(0, 16);
             int yFruit = rand.Next(1, 16);
             if(bild.Location == fruit.Location)
@@ -54,9 +52,7 @@ namespace snakegame
                 fruit.Location = new Point(xFruit * defaultsize, yFruit * defaultsize);
                 int randomFruit = rand.Next(0, 9);
                 fruit.BackgroundImage = Image.FromFile("images/" + fruitnames[randomFruit] + ".png");
-                
             }
-
             return fruit;
         }
     }

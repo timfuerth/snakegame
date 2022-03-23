@@ -88,7 +88,14 @@ namespace snakegame
 
         private void timerSnake_Tick(object sender, EventArgs e)
         {
-            pbFruit = sh.Kollission(pbFruit);
+            if (pbFruit.Location != sh.Kollission(pbFruit).Location)
+            {
+                pbFruit = sh.Kollission(pbFruit);
+                sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
+            }
+            
+            
+
             if (!sh.bewegen(direction))
             {
                 timerSnake.Stop();
@@ -175,6 +182,20 @@ namespace snakegame
                     
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public PictureBox NeuesSchlangenteil()
+        {
+            PictureBox Schlange = new PictureBox();
+            Schlange.Parent = this;
+            Schlange.Size = new Size(50, 50);
+
+            Schlange.BackgroundImage = Image.FromFile("images/body.png");
+
+            Schlange.BackgroundImageLayout = ImageLayout.Stretch;
+            Schlange.Location = new Point(50, 50);
+            this.Controls.Add(Schlange);
+            return Schlange;
         }
     }
 }
