@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pBminus = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pBclose = new System.Windows.Forms.PictureBox();
             this.btLogin = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbPassword = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tbLoginUser = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lbLoginText = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.pBminus = new System.Windows.Forms.PictureBox();
-            this.pBclose = new System.Windows.Forms.PictureBox();
-            this.tbPassword = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBminus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBclose)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,6 +59,17 @@
             this.panel1.Size = new System.Drawing.Size(800, 50);
             this.panel1.TabIndex = 2;
             // 
+            // pBminus
+            // 
+            this.pBminus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pBminus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pBminus.Location = new System.Drawing.Point(738, 9);
+            this.pBminus.Name = "pBminus";
+            this.pBminus.Size = new System.Drawing.Size(25, 25);
+            this.pBminus.TabIndex = 2;
+            this.pBminus.TabStop = false;
+            this.pBminus.Click += new System.EventHandler(this.pBminus_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -69,6 +80,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "snakegame - Login/Register";
             // 
+            // pBclose
+            // 
+            this.pBclose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pBclose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pBclose.Location = new System.Drawing.Point(769, 9);
+            this.pBclose.Name = "pBclose";
+            this.pBclose.Size = new System.Drawing.Size(25, 25);
+            this.pBclose.TabIndex = 0;
+            this.pBclose.TabStop = false;
+            this.pBclose.Click += new System.EventHandler(this.pBclose_Click);
+            // 
             // btLogin
             // 
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -76,7 +98,7 @@
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(181, 38);
             this.btLogin.TabIndex = 4;
-            this.btLogin.Text = "LOGIN/REGISTER";
+            this.btLogin.Text = "LOGIN";
             this.btLogin.UseVisualStyleBackColor = true;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
@@ -93,9 +115,31 @@
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // tbPassword
+            // 
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(15, 105);
+            this.tbPassword.Multiline = false;
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(525, 35);
+            this.tbPassword.TabIndex = 2;
+            this.tbPassword.Tag = "Password";
+            this.tbPassword.Text = "";
+            this.tbPassword.Enter += new System.EventHandler(this.textBox1_Enter);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 16);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Passwort";
+            // 
             // tbLoginUser
             // 
-            this.tbLoginUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLoginUser.Location = new System.Drawing.Point(15, 41);
             this.tbLoginUser.Multiline = false;
@@ -150,52 +194,6 @@
             this.pbLogo.TabIndex = 8;
             this.pbLogo.TabStop = false;
             // 
-            // pBminus
-            // 
-            this.pBminus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pBminus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pBminus.Location = new System.Drawing.Point(738, 9);
-            this.pBminus.Name = "pBminus";
-            this.pBminus.Size = new System.Drawing.Size(25, 25);
-            this.pBminus.TabIndex = 2;
-            this.pBminus.TabStop = false;
-            this.pBminus.Click += new System.EventHandler(this.pBminus_Click);
-            // 
-            // pBclose
-            // 
-            this.pBclose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pBclose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pBclose.Location = new System.Drawing.Point(769, 9);
-            this.pBclose.Name = "pBclose";
-            this.pBclose.Size = new System.Drawing.Size(25, 25);
-            this.pBclose.TabIndex = 0;
-            this.pBclose.TabStop = false;
-            this.pBclose.Click += new System.EventHandler(this.pBclose_Click);
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(15, 105);
-            this.tbPassword.Multiline = false;
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(525, 35);
-            this.tbPassword.TabIndex = 2;
-            this.tbPassword.Tag = "Password";
-            this.tbPassword.Text = "";
-            this.tbPassword.Enter += new System.EventHandler(this.textBox1_Enter);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 86);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Passwort";
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,11 +211,11 @@
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBminus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBclose)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBminus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBclose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
