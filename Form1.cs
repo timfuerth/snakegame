@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 using MySql.Data.MySqlClient;
 
@@ -134,7 +135,7 @@ namespace snakegame
                 pbFruit.Hide();
                 //Highscore speichern, wenn Benutzer angemeldet ist:
                 int neuerHighscore = Convert.ToInt32(tbAktuellerSpielstand.Text);
-                if (neuerHighscore >= aktuellerHighscore && angemeldet == true)
+                if (neuerHighscore > aktuellerHighscore && angemeldet == true)
                 {
                     HighscoreSpeichern();
                 }
@@ -198,7 +199,7 @@ namespace snakegame
                     direction = "w";
                     pBschlangenkopf.Image = Image.FromFile("images/links_head_tranparent.png");
                 }
-                    
+                Task.Delay(3);
             }
             if (keyData == Keys.Up || keyData == Keys.W)
             {
@@ -207,7 +208,7 @@ namespace snakegame
                     direction = "n";
                     pBschlangenkopf.Image = Image.FromFile("images/oben_head_tranparent.png");
                 }
-                    
+                Task.Delay(3);
 
             }
             if (keyData == Keys.Right || keyData == Keys.D)
@@ -217,7 +218,7 @@ namespace snakegame
                     direction = "o";
                     pBschlangenkopf.Image = Image.FromFile("images/rechts_head_tranparent.png");
                 }
-                    
+                Task.Delay(3);
 
             }
             if (keyData == Keys.Down || keyData == Keys.S)
@@ -227,8 +228,9 @@ namespace snakegame
                     direction = "s";
                     pBschlangenkopf.Image = Image.FromFile("images/unten_head_tranparent.png");
                 }
-                    
+                Task.Delay(3);
             }
+            
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
