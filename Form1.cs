@@ -21,9 +21,11 @@ namespace snakegame
         string direction;
         SnakeHead sh;
         public static Benutzer Spieler1;
-        
+        public static bool angemeldet;
+        int aktuellerHighscore;
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             //Form1 Größe:
             this.MinimumSize = new Size(800, 800); 
             this.MaximumSize = new Size(800, 800);
@@ -43,7 +45,7 @@ namespace snakegame
             pBrestart.BringToFront();
             pbFruit.SendToBack();
             pbFruit.BackgroundImage = Image.FromFile("images/melone.png");
-            if(Spieler1 == null)
+            if(angemeldet == false)
             {
                 Spieler1 = new Benutzer("nicht angemeldet", "nicht angemeldet", "nicht angemeldet", "nicht angemeldet", -1);
             }
@@ -92,26 +94,53 @@ namespace snakegame
 
         }
 
+        private void HighscoreSpeichern()
+        {
+            MySqlConnection con = new MySqlConnection();
+            MySqlCommand cmd = new MySqlCommand();
+
+            con.ConnectionString = "datasource = 127.0.0.1; port = 3306; username = root; password =; database = snakedb;";
+            cmd.Connection = con;
+
+            cmd.CommandText = $"INSERT INTO highscore (Laenge, Datum, BenutzerID) VALUES ({Spieler1.Rekord},'{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}',{Spieler1.BenutzerID})";
+
+            
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+
+        }
         private void timerSnake_Tick(object sender, EventArgs e)
         {
+            
             if (pbFruit.Location != sh.Kollission(pbFruit).Location)
             {
                 pbFruit = sh.Kollission(pbFruit);
                 tbAktuellerSpielstand.Text = Spieler1.spielt().ToString();
                 tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
-                SnakeHead.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
+                sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
             }
             
             
 
+            //Schlange ist angestoßen:
             if (!sh.bewegen(direction))
             {
                 timerSnake.Stop();
                 panelRestart.Show();
                 pBschlangenkopf.Hide();
                 pbFruit.Hide();
+                //Highscore speichern, wenn Benutzer angemeldet ist:
+                int neuerHighscore = Convert.ToInt32(tbAktuellerSpielstand.Text);
+                if (neuerHighscore >= aktuellerHighscore && angemeldet == true)
+                {
+                    HighscoreSpeichern();
+                }
             }
                 
+            
         }
         private void pBclose_Click(object sender, EventArgs e)
         {
@@ -124,6 +153,10 @@ namespace snakegame
 
         private void pBrestart_Click(object sender, EventArgs e)
         {
+            foreach (Schlange body in sh.schlangenListe)
+            {
+                this.Controls.Remove(body.bild);
+            }
             panelRestart.Hide();
             pBschlangenkopf.Show();
             pbFruit.Show();
@@ -132,14 +165,15 @@ namespace snakegame
 
         private void start()
         {
-            foreach (Schlange body in SnakeHead.schlangenListe)
-            {
-                this.Controls.Remove(body.bild);
-            }
-            SnakeHead.schlangenListe.Clear();
             sh = new SnakeHead(pBschlangenkopf);
+
+            //sh.schlangenListe.Clear();
+            
             direction = "";
+
+            aktuellerHighscore = Convert.ToInt32(tbAktuellerSpielstand.Text);
             tbAktuellerSpielstand.Text = Spieler1.punkteZuruecksetzen().ToString();
+
             timerSnake.Start();
         }
 
@@ -204,8 +238,9 @@ namespace snakegame
             Schlange.Parent = this;
             Schlange.Size = new Size(50, 50);
 
-            Schlange.BackgroundImage = Image.FromFile("images/body.png");
-
+            //Schlange.BackgroundImage = Image.FromFile("images/body.png");
+            Schlange.BackColor = Color.Blue;
+            Schlange.BorderStyle = BorderStyle.FixedSingle;
             Schlange.BackgroundImageLayout = ImageLayout.Stretch;
             Schlange.Location = new Point(50, 50);
             this.Controls.Add(Schlange);

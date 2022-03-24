@@ -160,6 +160,7 @@
     <Content Include="bin\Debug\images\restart.png" />
     <Content Include="bin\Debug\images\snake.ico" />
     <Content Include="bin\Debug\images\snake.png" />
+    <Content Include="bin\Debug\images\SnakeHead.png" />
     <Content Include="bin\Debug\images\unten_head_tranparent.png" />
     <Content Include="bin\Debug\images\zitrone.png" />
   </ItemGroup>
