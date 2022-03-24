@@ -197,7 +197,7 @@ namespace snakegame
                 if (direction != "o")
                 {
                     direction = "w";
-                    pBschlangenkopf.Image = Image.FromFile("images/links_head_tranparent.png");
+                    pBschlangenkopf.Image = Image.FromFile("images/Snakehead_links.png");
                     Task.Delay(3000);
                 }
                 
@@ -218,7 +218,7 @@ namespace snakegame
                 if (direction != "w")
                 {
                     direction = "o";
-                    pBschlangenkopf.Image = Image.FromFile("images/rechts_head_tranparent.png");
+                    pBschlangenkopf.Image = Image.FromFile("images/Snakehead_rechts.png");
                     Task.Delay(3000);
                 }
                 
@@ -229,7 +229,7 @@ namespace snakegame
                 if (direction != "n")
                 {
                     direction = "s";
-                    pBschlangenkopf.Image = Image.FromFile("images/unten_head_tranparent.png");
+                    pBschlangenkopf.Image = Image.FromFile("images/Snakehead_unten.png");
                     Task.Delay(3000);
                 }
                 
