@@ -86,10 +86,6 @@ namespace snakegame
                                     besetzt = true;
                                 }
                             }
-                            for (int i = schlangenListe.Count; i > 1; i--)
-                            {
-                                
-                            }
                         }
                     }
                     else
@@ -98,7 +94,7 @@ namespace snakegame
                     }
                 } while (besetzt);
 
-                fruit.Location = new Point(xFruit * defaultsize, yFruit * defaultsize);
+                fruit.Location = new Point(xFruit, yFruit);
                 int randomFruit = rand.Next(0, 9);
                 fruit.BackgroundImage = Image.FromFile("images/" + fruitnames[randomFruit] + ".png");
             }
