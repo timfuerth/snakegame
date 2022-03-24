@@ -71,21 +71,24 @@ namespace snakegame
             {
                 do
                 {
-                    xFruit = rand.Next(0, 16);
-                    yFruit = rand.Next(1, 16);
+                    xFruit = rand.Next(0, 16) * defaultsize;
+                    yFruit = rand.Next(1, 16) * defaultsize;
                     besetzt = false;
                     
                     if (x != xFruit || y != yFruit)
                     {
                         if (schlangenListe.Count > 0)
                         {
-
-                            for (int i = schlangenListe.Count; i > 1; i--)
+                            foreach(Schlange body in schlangenListe)
                             {
-                                if (schlangenListe[i - 1].bild.Left == xFruit && schlangenListe[i - 1].bild.Top == yFruit)
+                                if (body.bild.Left == xFruit && body.bild.Top == yFruit)
                                 {
                                     besetzt = true;
                                 }
+                            }
+                            for (int i = schlangenListe.Count; i > 1; i--)
+                            {
+                                
                             }
                         }
                     }
