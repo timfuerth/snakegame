@@ -25,6 +25,19 @@ namespace snakegame
         public static Benutzer Spieler1;
         public static bool angemeldet;
         int aktuellerHighscore;
+
+         
+
+        private void EM_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void EM_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -173,7 +186,7 @@ namespace snakegame
             
             direction = "";
 
-            aktuellerHighscore = Convert.ToInt32(tbAktuellerSpielstand.Text);
+            aktuellerHighscore = Convert.ToInt32(tbRekord.Text);
             tbAktuellerSpielstand.Text = Spieler1.punkteZuruecksetzen().ToString();
 
             timerSnake.Start();
@@ -253,6 +266,24 @@ namespace snakegame
             Schlange.Location = new Point(50, 50);
             this.Controls.Add(Schlange);
             return Schlange;
+        }
+
+        //Form1 bewegen:
+        private Point mouse_offset;
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                Location = mousePos;
+            }
         }
     }
 }
