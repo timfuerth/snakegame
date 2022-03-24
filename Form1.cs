@@ -5,9 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
+
 
 using MySql.Data.MySqlClient;
 
@@ -198,7 +199,7 @@ namespace snakegame
                 {
                     direction = "w";
                     pBschlangenkopf.Image = Image.FromFile("images/Snakehead_links.png");
-                    Task.Delay(3000);
+                    Thread.Sleep(5);
                 }
                 
             }
@@ -208,7 +209,7 @@ namespace snakegame
                 {
                     direction = "n";
                     pBschlangenkopf.Image = Image.FromFile("images/Snakehead.png");
-                    Task.Delay(3000);
+                    Thread.Sleep(5);
                 }
                 
 
@@ -219,7 +220,7 @@ namespace snakegame
                 {
                     direction = "o";
                     pBschlangenkopf.Image = Image.FromFile("images/Snakehead_rechts.png");
-                    Task.Delay(3000);
+                    Thread.Sleep(5);
                 }
                 
 
@@ -230,7 +231,8 @@ namespace snakegame
                 {
                     direction = "s";
                     pBschlangenkopf.Image = Image.FromFile("images/Snakehead_unten.png");
-                    Task.Delay(3000);
+                    Thread.Sleep(5);
+
                 }
                 
             }
