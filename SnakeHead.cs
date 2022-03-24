@@ -64,10 +64,37 @@ namespace snakegame
 
         public PictureBox Kollission(PictureBox fruit)
         {
-            int xFruit = rand.Next(0, 16);
-            int yFruit = rand.Next(1, 16);
+            int xFruit;
+            int yFruit;
+            bool besetzt = false;
             if(bild.Location == fruit.Location)
             {
+                do
+                {
+                    xFruit = rand.Next(0, 16);
+                    yFruit = rand.Next(1, 16);
+                    besetzt = false;
+                    
+                    if (x != xFruit || y != yFruit)
+                    {
+                        if (schlangenListe.Count > 0)
+                        {
+
+                            for (int i = schlangenListe.Count; i > 1; i--)
+                            {
+                                if (schlangenListe[i - 1].bild.Left == xFruit && schlangenListe[i - 1].bild.Top == yFruit)
+                                {
+                                    besetzt = true;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        besetzt = true;
+                    }
+                } while (besetzt);
+
                 fruit.Location = new Point(xFruit * defaultsize, yFruit * defaultsize);
                 int randomFruit = rand.Next(0, 9);
                 fruit.BackgroundImage = Image.FromFile("images/" + fruitnames[randomFruit] + ".png");
