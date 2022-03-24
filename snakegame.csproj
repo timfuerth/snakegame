@@ -161,6 +161,9 @@
     <Content Include="bin\Debug\images\snake.ico" />
     <Content Include="bin\Debug\images\snake.png" />
     <Content Include="bin\Debug\images\Snakehead.png" />
+    <Content Include="bin\Debug\images\Snakehead_links.png" />
+    <Content Include="bin\Debug\images\Snakehead_rechts.png" />
+    <Content Include="bin\Debug\images\Snakehead_unten.png" />
     <Content Include="bin\Debug\images\unten_head_tranparent.png" />
     <Content Include="bin\Debug\images\zitrone.png" />
   </ItemGroup>

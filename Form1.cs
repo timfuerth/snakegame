@@ -198,17 +198,19 @@ namespace snakegame
                 {
                     direction = "w";
                     pBschlangenkopf.Image = Image.FromFile("images/links_head_tranparent.png");
+                    Task.Delay(3000);
                 }
-                Task.Delay(3);
+                
             }
             if (keyData == Keys.Up || keyData == Keys.W)
             {
                 if (direction != "s")
                 {
                     direction = "n";
-                    pBschlangenkopf.Image = Image.FromFile("images/oben_head_tranparent.png");
+                    pBschlangenkopf.Image = Image.FromFile("images/Snakehead.png");
+                    Task.Delay(3000);
                 }
-                Task.Delay(3);
+                
 
             }
             if (keyData == Keys.Right || keyData == Keys.D)
@@ -217,8 +219,9 @@ namespace snakegame
                 {
                     direction = "o";
                     pBschlangenkopf.Image = Image.FromFile("images/rechts_head_tranparent.png");
+                    Task.Delay(3000);
                 }
-                Task.Delay(3);
+                
 
             }
             if (keyData == Keys.Down || keyData == Keys.S)
@@ -227,8 +230,9 @@ namespace snakegame
                 {
                     direction = "s";
                     pBschlangenkopf.Image = Image.FromFile("images/unten_head_tranparent.png");
+                    Task.Delay(3000);
                 }
-                Task.Delay(3);
+                
             }
             
             return base.ProcessCmdKey(ref msg, keyData);

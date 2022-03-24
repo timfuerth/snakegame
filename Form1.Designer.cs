@@ -192,6 +192,7 @@
             this.pBschlangenkopf.BackColor = System.Drawing.Color.Transparent;
             this.pBschlangenkopf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pBschlangenkopf.ErrorImage = null;
+            this.pBschlangenkopf.Image = global::snakegame.Properties.Resources.Snakehead1;
             this.pBschlangenkopf.Location = new System.Drawing.Point(400, 400);
             this.pBschlangenkopf.Margin = new System.Windows.Forms.Padding(2);
             this.pBschlangenkopf.Name = "pBschlangenkopf";
