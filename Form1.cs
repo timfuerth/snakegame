@@ -25,6 +25,7 @@ namespace snakegame
         public static Benutzer Spieler1;
         public static bool angemeldet;
         int aktuellerHighscore;
+        Random rand = new Random();
 
          
 
@@ -60,6 +61,9 @@ namespace snakegame
             pBrestart.BringToFront();
             pbFruit.SendToBack();
             pbFruit.BackgroundImage = Image.FromFile("images/melone.png");
+            pbPU.BackgroundImage = Image.FromFile("images/fast.png");
+            pbPU.SendToBack();
+
             if(angemeldet == false)
             {
                 Spieler1 = new Benutzer("nicht angemeldet", "nicht angemeldet", "nicht angemeldet", "nicht angemeldet", -1, 0);
@@ -68,46 +72,6 @@ namespace snakegame
             start();
         }
 
-        private void DatenbankAuslesen()
-        {
-            MySqlConnection con = new MySqlConnection();
-            MySqlCommand cmd = new MySqlCommand();
-            MySqlDataReader reader;
-
-            con.ConnectionString = "datasource = 127.0.0.1; port = 3306; username = root; password =; database = snakedb;";
-            cmd.Connection = con;
-
-            
-            //Benutzer Datenbank auslesen:
-            cmd.CommandText = "SELECT * from benutzer";
-
-            con.Open();
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                
-            }
-
-            reader.Close();
-            con.Close();
-
-
-            //Highscore Datenbank auslesen:
-            cmd.CommandText = "SELECT * from highscore";
-
-            con.Open();
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-            }
-
-            reader.Close();
-            con.Close();
-
-        }
 
         private void HighscoreSpeichern()
         {
@@ -129,16 +93,38 @@ namespace snakegame
         }
         private void timerSnake_Tick(object sender, EventArgs e)
         {
-            
-            if (pbFruit.Location != sh.Kollission(pbFruit).Location)
+            //Fruit check
+            if (pbFruit.Location != sh.FruitKollission(pbFruit).Location)
             {
-                pbFruit = sh.Kollission(pbFruit);
                 tbAktuellerSpielstand.Text = Spieler1.spielt().ToString();
                 tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
                 sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
+                if(timerPU.Enabled == false)
+                {
+                    int ran = rand.Next(0, 2);
+                    if (ran == 0)
+                    {
+                        sh.PowerUpErstellen(pbPU);
+                        pbPU.Show();
+                    }
+                }
+                
+            }
+            //PowerUp check
+            if (pbPU.Visible == true)
+            {
+                if (pbPU.Location != sh.PowerUpKollission(pbPU).Location)
+                {
+                    if (pbPU.Tag.ToString() == "fast")
+                        timerSnake.Interval = 70;
+                    else if (pbPU.Tag.ToString() == "slow")
+                        timerSnake.Interval = 250;
+                    timerPU.Start();
+                    pbPU.Hide();
+                }
             }
             
-            
+
 
             //Schlange ist angestoßen:
             if (!sh.bewegen(direction))
@@ -147,6 +133,7 @@ namespace snakegame
                 panelRestart.Show();
                 pBschlangenkopf.Hide();
                 pbFruit.Hide();
+                pbPU.Hide();
                 //Highscore speichern, wenn Benutzer angemeldet ist:
                 int neuerHighscore = Convert.ToInt32(tbAktuellerSpielstand.Text);
                 if (neuerHighscore > aktuellerHighscore && angemeldet == true)
@@ -175,6 +162,7 @@ namespace snakegame
             panelRestart.Hide();
             pBschlangenkopf.Show();
             pbFruit.Show();
+            pbPU.Show();
             start();
         }
 
@@ -283,6 +271,22 @@ namespace snakegame
                 Point mousePos = Control.MousePosition;
                 mousePos.Offset(mouse_offset.X, mouse_offset.Y);
                 Location = mousePos;
+            }
+        }
+
+        private void timerPU_Tick(object sender, EventArgs e)
+        {
+            int timeLeft = Convert.ToInt32(timerPU.Tag);
+            if (timeLeft > 1)
+            {
+                timeLeft--;
+                timerPU.Tag = timeLeft.ToString();
+            }
+            else
+            {
+                timerSnake.Interval = 150;
+                timerPU.Tag = "5";
+                timerPU.Stop();
             }
         }
     }
