@@ -11,7 +11,7 @@ namespace snakegame
     {
         public Schlange(PictureBox bild) : base(bild)
         {
-
+            
         }
 
 

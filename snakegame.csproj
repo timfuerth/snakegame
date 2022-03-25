@@ -147,6 +147,7 @@
     <Content Include="bin\Debug\images\body.png" />
     <Content Include="bin\Debug\images\erdbeere.png" />
     <Content Include="bin\Debug\images\error-icon2.png" />
+    <Content Include="bin\Debug\images\fast.png" />
     <Content Include="bin\Debug\images\links_head_tranparent.png" />
     <Content Include="bin\Debug\images\oben_head_tranparent.png" />
     <Content Include="bin\Debug\images\honigmelone.png" />
@@ -158,6 +159,7 @@
     <Content Include="bin\Debug\images\pokal.png" />
     <Content Include="bin\Debug\images\rechts_head_tranparent.png" />
     <Content Include="bin\Debug\images\restart.png" />
+    <Content Include="bin\Debug\images\slow.png" />
     <Content Include="bin\Debug\images\snake.ico" />
     <Content Include="bin\Debug\images\snake.png" />
     <Content Include="bin\Debug\images\Snakehead.png" />

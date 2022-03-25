@@ -17,7 +17,7 @@ namespace snakegame
         int y = 400;
         
         string[] fruitnames = { "honigmelone", "kiwi", "orange", "apfel", "melone", "avocado", "zitrone", "erdbeere", "kokosnuss" };
-
+        string[] PUnames = { "fast", "slow"};
         public SnakeHead(PictureBox bild) : base(bild)
         {
             
@@ -62,7 +62,7 @@ namespace snakegame
             return true;
         }
 
-        public PictureBox Kollission(PictureBox fruit)
+        public PictureBox FruitKollission(PictureBox fruit)
         {
             int xFruit;
             int yFruit;
@@ -97,10 +97,64 @@ namespace snakegame
                 fruit.Location = new Point(xFruit, yFruit);
                 int randomFruit = rand.Next(0, 9);
                 fruit.BackgroundImage = Image.FromFile("images/" + fruitnames[randomFruit] + ".png");
+                
+                
             }
+            
+
+
+
             return fruit;
         }
+        public PictureBox PowerUpErstellen(PictureBox pbPU)
+        {
+            int randomPU = rand.Next(0, PUnames.Length);
+            pbPU.BackgroundImage = Image.FromFile("images/" + PUnames[randomPU] + ".png");
+            pbPU.Tag = PUnames[randomPU];
+            return pbPU;
+        }
 
+        public PictureBox PowerUpKollission(PictureBox pbPU)
+        {
+            int xPU;
+            int yPU;
+            bool besetzt = false;
+            if (pbPU.Visible == true)
+            {
+                if (bild.Location == pbPU.Location)
+                {
+                    do
+                    {
+                        xPU = rand.Next(0, 16) * defaultsize;
+                        yPU = rand.Next(1, 16) * defaultsize;
+                        besetzt = false;
+
+                        if (x != xPU || y != yPU)
+                        {
+                            if (schlangenListe.Count > 0)
+                            {
+                                foreach (Schlange body in schlangenListe)
+                                {
+                                    if (body.bild.Left == xPU && body.bild.Top == yPU)
+                                    {
+                                        besetzt = true;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            besetzt = true;
+                        }
+                    } while (besetzt);
+
+                    pbPU.Location = new Point(xPU, yPU);
+                    
+                }
+            }
+            
+            return pbPU;
+        }
         
     }
 }

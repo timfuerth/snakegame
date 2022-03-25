@@ -43,6 +43,8 @@
             this.pBrestart = new System.Windows.Forms.PictureBox();
             this.pbFruit = new System.Windows.Forms.PictureBox();
             this.pBschlangenkopf = new System.Windows.Forms.PictureBox();
+            this.pbPU = new System.Windows.Forms.PictureBox();
+            this.timerPU = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRekord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAktuellerSpielstand)).BeginInit();
@@ -52,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pBrestart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPU)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -161,9 +164,9 @@
             // 
             this.panelRestart.BackColor = System.Drawing.Color.Transparent;
             this.panelRestart.Controls.Add(this.pBrestart);
-            this.panelRestart.Location = new System.Drawing.Point(0, 85);
+            this.panelRestart.Location = new System.Drawing.Point(0, 117);
             this.panelRestart.Name = "panelRestart";
-            this.panelRestart.Size = new System.Drawing.Size(800, 718);
+            this.panelRestart.Size = new System.Drawing.Size(800, 686);
             this.panelRestart.TabIndex = 5;
             this.panelRestart.Visible = false;
             // 
@@ -202,11 +205,29 @@
             this.pBschlangenkopf.TabIndex = 0;
             this.pBschlangenkopf.TabStop = false;
             // 
+            // pbPU
+            // 
+            this.pbPU.BackColor = System.Drawing.Color.Transparent;
+            this.pbPU.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbPU.Location = new System.Drawing.Point(300, 300);
+            this.pbPU.Name = "pbPU";
+            this.pbPU.Size = new System.Drawing.Size(50, 50);
+            this.pbPU.TabIndex = 6;
+            this.pbPU.TabStop = false;
+            this.pbPU.Visible = false;
+            // 
+            // timerPU
+            // 
+            this.timerPU.Interval = 1000;
+            this.timerPU.Tag = "5";
+            this.timerPU.Tick += new System.EventHandler(this.timerPU_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 800);
+            this.Controls.Add(this.pbPU);
             this.Controls.Add(this.pbFruit);
             this.Controls.Add(this.panelRestart);
             this.Controls.Add(this.panel1);
@@ -226,6 +247,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pBrestart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPU)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,6 +267,8 @@
         private System.Windows.Forms.TextBox tbRekord;
         private System.Windows.Forms.PictureBox pbRekord;
         private System.Windows.Forms.TextBox tbAktuellerSpielstand;
+        private System.Windows.Forms.PictureBox pbPU;
+        private System.Windows.Forms.Timer timerPU;
     }
 }
 
