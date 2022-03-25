@@ -19,6 +19,9 @@ namespace snakegame
         }
         RichTextBox tbActive = new RichTextBox();
         string activeScreen = "Anmeldung";
+        int BID;
+        string[] ReaderUerbergeben = new string[5];
+
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.MinimumSize = new Size(800, 800);
@@ -72,20 +75,23 @@ namespace snakegame
 
 
             //Benutzer Datenbank auslesen:
-            cmd.CommandText = $"SELECT Benutzername from benutzer where benutzername = '{tbRegisterUser}'";
+            cmd.CommandText = $"SELECT Benutzername from benutzer where benutzername = '{tbRegisterUser.Text}'";
 
             con.Open();
             reader = cmd.ExecuteReader();
-            bool correct = false;
+            bool correct = false; 
             while (reader.Read())
             {
                 correct = true;
+                
             }
             if (correct)
             {
                 MessageBox.Show("Dieser Benutzername ist bereits vergeben!", "SnakeGame", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 return;
             }
+            
             reader.Close();
             con.Close();
             cmd.CommandText = $"INSERT INTO `benutzer`(`Vorname`, `Nachname`, `Benutzername`, `Passwort`) VALUES ('{tbVorname.Text}','{tbNachname.Text}','{tbRegisterUser.Text}','{tbRegisterPasswort.Text}')";
@@ -93,7 +99,37 @@ namespace snakegame
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Erfolgreich registriert!");
-            GoBack();
+
+            cmd.CommandText = $"SELECT BID from benutzer where Benutzername = '{tbRegisterUser.Text}'";
+
+            con.Open();
+            reader = cmd.ExecuteReader();
+           
+            while (reader.Read())
+            {
+               
+
+                
+                MessageBox.Show(reader[0].ToString());
+                BID = Convert.ToInt32(reader[0]);
+                GoBack();
+                
+                
+            }
+
+            reader.Close();
+            con.Close();
+
+            cmd.Connection = con;
+            cmd.CommandText = $"INSERT INTO highscore (Laenge, Datum, BenutzerID) VALUES (0,'{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}',{BID})";
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+
+            BenutzerErstellen(Convert.ToInt32(BID));
+
         }
 
         private void LoginAuslesen()
@@ -116,15 +152,55 @@ namespace snakegame
             {
                 correct = true;
                 MessageBox.Show("Erfolgreich angemeldet");
-                Form1.Spieler1 = null;
-                Form1.Spieler1 = new Benutzer(reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToInt32(reader[0]));
-                Form1.angemeldet = true;
+                
+                BenutzerErstellen(Convert.ToInt32(reader[0]));
+                
+
                 GoBack();
             }
             if (!correct)
                 MessageBox.Show("Passwort oder Benutzername ist falsch!");
             reader.Close();
             con.Close();
+
+        }
+
+        private void BenutzerErstellen(int BID)
+        {
+            MySqlConnection con = new MySqlConnection();
+            MySqlCommand cmd = new MySqlCommand();
+            MySqlDataReader reader;
+
+            con.ConnectionString = "datasource = 127.0.0.1; port = 3306; username = root; password =; database = snakedb;";
+            cmd.Connection = con;
+
+            cmd.CommandText = "SELECT benutzer.Benutzername, benutzer.Vorname, benutzer.Nachname, benutzer.Passwort, benutzer.BID, highscore.Laenge FROM benutzer INNER JOIN highscore ON benutzer.BID = highscore.BenutzerID Where benutzer.BID = " + BID + ";";
+
+            con.Open();
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Form1.Spieler1 = null;
+                Form1.Spieler1 = new Benutzer(reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), Convert.ToInt32(reader[4]), Convert.ToInt32(reader[5]));
+
+                Form1.angemeldet = true;
+            }
+
+            reader.Close();
+            con.Close();
+
+
+            
+
+            /*SELECT benutzer.Benutzername, benutzer.Vorname, benutzer.Nachname, benutzer.Passwort, benutzer.BID, highscore.Laenge
+            FROM benutzer
+            INNER JOIN highscore
+            ON benutzer.BID = highscore.BenutzerID*/
+        }
+
+        private void HighscoreBeiBenutzer()
+        {
 
         }
 

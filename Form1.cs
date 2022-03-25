@@ -62,7 +62,7 @@ namespace snakegame
             pbFruit.BackgroundImage = Image.FromFile("images/melone.png");
             if(angemeldet == false)
             {
-                Spieler1 = new Benutzer("nicht angemeldet", "nicht angemeldet", "nicht angemeldet", "nicht angemeldet", -1);
+                Spieler1 = new Benutzer("nicht angemeldet", "nicht angemeldet", "nicht angemeldet", "nicht angemeldet", -1, 0);
             }
             
             start();

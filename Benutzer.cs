@@ -15,13 +15,14 @@ namespace snakegame
         public int BenutzerID { get; private set; }
         public int Rekord, aktuellePunktezahl;
 
-        public Benutzer(string user, string vorn, string nachn, string pwd, int BenutzerID)
+        public Benutzer(string user, string vorn, string nachn, string pwd, int BenutzerID, int rekord)
         {
             username = user;
             vorname = vorn;
             nachname = nachn;
             passwort = pwd;
             this.BenutzerID = BenutzerID;
+            Rekord = rekord;
         }
 
         public int punkteZuruecksetzen()
