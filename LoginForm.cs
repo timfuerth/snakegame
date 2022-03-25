@@ -19,11 +19,12 @@ namespace snakegame
         }
         RichTextBox tbActive = new RichTextBox();
         string activeScreen = "Anmeldung";
+        //BenutzerID
         int BID;
         //LoginForm bewegen:
         private Point mouse_offset;
 
-        private void LoginForm_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e) //Design der Form wird geladen
         {
             this.MinimumSize = new Size(800, 800);
             this.MaximumSize = new Size(800, 800);
@@ -41,7 +42,16 @@ namespace snakegame
             pbLogo.BackgroundImage = Image.FromFile("images/snake.png");
         }
 
-        private void btLogin_Click(object sender, EventArgs e)
+        private void GoBack() //Form 1 wird geladen
+        {
+            Hide();
+            Form1 mainform = new Form1();
+            mainform.Closed += (s, args) => Close();
+            mainform.Show();
+        }
+
+        #region Login/Registrierungs Vorgang
+        private void btLogin_Click(object sender, EventArgs e) //Es wird versucht den Benutzer einzuloggen/registrieren
         {
             if (panelLogin.Visible)
             {
@@ -62,10 +72,8 @@ namespace snakegame
                 Registrieren(tbRegisterUser.Text);
             }
         }
-        
-        
 
-        private void Registrieren(string user)
+        private void Registrieren(string user) //Neuer Benutzer wird angelegt, in die Datenbank geschrieben und eingeloggt
         {
             MySqlConnection con = new MySqlConnection();
             MySqlCommand cmd = new MySqlCommand();
@@ -133,7 +141,7 @@ namespace snakegame
 
         }
 
-        private void LoginAuslesen()
+        private void LoginAuslesen() //Passwort/User werden mit Datenbank verglichen, falls richtig, eingeloggt
         {
             MySqlConnection con = new MySqlConnection();
             MySqlCommand cmd = new MySqlCommand();
@@ -166,7 +174,7 @@ namespace snakegame
 
         }
 
-        private void BenutzerErstellen(int BID)
+        private void BenutzerErstellen(int BID)//Benutzer wird aus Datenbank gelesen und in die Klasse eingetragen
         {
             MySqlConnection con = new MySqlConnection();
             MySqlCommand cmd = new MySqlCommand();
@@ -190,33 +198,21 @@ namespace snakegame
 
             reader.Close();
             con.Close();
-
-
-            
-
-            /*SELECT benutzer.Benutzername, benutzer.Vorname, benutzer.Nachname, benutzer.Passwort, benutzer.BID, highscore.Laenge
-            FROM benutzer
-            INNER JOIN highscore
-            ON benutzer.BID = highscore.BenutzerID*/
         }
+        #endregion
 
-        private void GoBack()
-        {
-            Hide();
-            Form1 mainform = new Form1();
-            mainform.Closed += (s, args) => Close();
-            mainform.Show();
-        }
+        #region Header Buttons
         private void pBminus_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void pBclose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        #endregion
 
+        #region Highlighten der gewählten Textbox
         private void textBox1_Enter(object sender, EventArgs e)
         {
             tbActive = (RichTextBox)sender;
@@ -248,6 +244,22 @@ namespace snakegame
             tbActive.Tag = "";
             this.Refresh();
         }
+
+        private void panelRegister_Paint(object sender, PaintEventArgs e)
+        {
+            if (tbActive.Tag != null)
+            {
+                if (tbActive.Tag.ToString() == "active")
+                {
+                    Pen p = new Pen(Color.Red);
+                    Graphics g = e.Graphics;
+                    int variance = 3;
+                    g.DrawRectangle(p, new Rectangle(tbActive.Location.X - variance + 1, tbActive.Location.Y - variance + 1, tbActive.Width + variance, tbActive.Height + variance));
+                }
+            }
+        }
+        #endregion
+
         #region Switch between Register/Login screen
         private void lbRegister_Click(object sender, EventArgs e)
         {
@@ -290,19 +302,7 @@ namespace snakegame
             lbLoginText2.Text = "Registriren bei SnakeGame";
         }
         #endregion
-        private void panelRegister_Paint(object sender, PaintEventArgs e)
-        {
-            if (tbActive.Tag != null)
-            {
-                if (tbActive.Tag.ToString() == "active")
-                {
-                    Pen p = new Pen(Color.Red);
-                    Graphics g = e.Graphics;
-                    int variance = 3;
-                    g.DrawRectangle(p, new Rectangle(tbActive.Location.X - variance + 1, tbActive.Location.Y - variance + 1, tbActive.Width + variance, tbActive.Height + variance));
-                }
-            }
-        }
+        
 
         #region Bewegung des Programms
         private void panel1_MouseMove(object sender, MouseEventArgs e)
