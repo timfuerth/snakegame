@@ -176,7 +176,7 @@ namespace snakegame
 
             aktuellerHighscore = Convert.ToInt32(tbRekord.Text);
             tbAktuellerSpielstand.Text = Spieler1.punkteZuruecksetzen().ToString();
-
+            tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
             timerSnake.Start();
         }
 

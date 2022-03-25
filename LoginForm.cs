@@ -110,7 +110,7 @@ namespace snakegame
                
 
                 
-                MessageBox.Show(reader[0].ToString());
+               
                 BID = Convert.ToInt32(reader[0]);
                 GoBack();
                 
