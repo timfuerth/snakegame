@@ -20,7 +20,8 @@ namespace snakegame
         RichTextBox tbActive = new RichTextBox();
         string activeScreen = "Anmeldung";
         int BID;
-        string[] ReaderUerbergeben = new string[5];
+        //LoginForm bewegen:
+        private Point mouse_offset;
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -199,12 +200,6 @@ namespace snakegame
             ON benutzer.BID = highscore.BenutzerID*/
         }
 
-        private void HighscoreBeiBenutzer()
-        {
-
-        }
-
-
         private void GoBack()
         {
             Hide();
@@ -253,7 +248,7 @@ namespace snakegame
             tbActive.Tag = "";
             this.Refresh();
         }
-
+        #region Switch between Register/Login screen
         private void lbRegister_Click(object sender, EventArgs e)
         {
             tbActive.Tag = null;
@@ -266,6 +261,7 @@ namespace snakegame
                 LoginSetup();
             
         }
+        
         private void RegisterSetup()
         {
             activeScreen = "Registrierung";
@@ -293,6 +289,7 @@ namespace snakegame
             lbLoginText.Text = "Registrierung";
             lbLoginText2.Text = "Registriren bei SnakeGame";
         }
+        #endregion
         private void panelRegister_Paint(object sender, PaintEventArgs e)
         {
             if (tbActive.Tag != null)
@@ -307,9 +304,7 @@ namespace snakegame
             }
         }
 
-        //LoginForm bewegen:
-        private Point mouse_offset;
-
+        #region Bewegung des Programms
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -324,5 +319,6 @@ namespace snakegame
         {
             mouse_offset = new Point(-e.X, -e.Y);
         }
+        #endregion
     }
 }

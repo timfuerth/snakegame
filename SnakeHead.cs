@@ -156,5 +156,10 @@ namespace snakegame
             return pbPU;
         }
         
+        public void SchlangenTeilHinzufügen(PictureBox schlangenTeil)
+        {
+            Schlange body = new Schlange(schlangenTeil);
+            schlangenListe.Add(body);
+        }
     }
 }

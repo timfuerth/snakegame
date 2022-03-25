@@ -98,7 +98,10 @@ namespace snakegame
             {
                 tbAktuellerSpielstand.Text = Spieler1.spielt().ToString();
                 tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
-                sh.schlangenListe.Add(new Schlange(NeuesSchlangenteil()));
+                //Neue Picturebox wird erstellt und der Schlange hinzugefügt
+                sh.SchlangenTeilHinzufügen(NeuesSchlangenteil());
+
+                //Wenn das vorige PowerUp nicht mehr aktiv ist:
                 if(timerPU.Enabled == false)
                 {
                     int ran = rand.Next(0, 2);
