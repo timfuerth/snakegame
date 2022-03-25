@@ -27,17 +27,6 @@ namespace snakegame
         int aktuellerHighscore;
         Random rand = new Random();
 
-         
-
-        private void EM_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void EM_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -53,6 +42,7 @@ namespace snakegame
 
             this.Location = new Point(x / 2, y / 2);
 
+            //Design der Pictureboxen:
             this.BackgroundImage = Image.FromFile("images/wiese.png");
             pBclose.BackgroundImage = Image.FromFile("images/error-icon2.png");
             pBminus.BackgroundImage = Image.FromFile("images/minus.png");
@@ -64,16 +54,18 @@ namespace snakegame
             pbPU.BackgroundImage = Image.FromFile("images/fast.png");
             pbPU.SendToBack();
 
+            //Offline spielen (Rekord wird nicht gespeichert):
             if(angemeldet == false)
             {
                 Spieler1 = new Benutzer("nicht angemeldet", "nicht angemeldet", "nicht angemeldet", "nicht angemeldet", -1, 0);
             }
             
+            //Hier wird zu der Methode "start()" gesprungen:
             start();
         }
 
 
-        private void HighscoreSpeichern()
+        private void HighscoreSpeichern() //Highscore wird in der Datenbank gespeichert
         {
             MySqlConnection con = new MySqlConnection();
             MySqlCommand cmd = new MySqlCommand();
@@ -83,8 +75,6 @@ namespace snakegame
 
             cmd.CommandText = $"INSERT INTO highscore (Laenge, Datum, BenutzerID) VALUES ({Spieler1.Rekord},'{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}',{Spieler1.BenutzerID})";
 
-            
-
             con.Open();
             cmd.ExecuteNonQuery();
 
@@ -93,12 +83,13 @@ namespace snakegame
         }
         private void timerSnake_Tick(object sender, EventArgs e)
         {
-            //Fruit check
-            if (pbFruit.Location != sh.FruitKollission(pbFruit).Location)
+            //Fruit check:
+            if (pbFruit.Location != sh.FruitKollission(pbFruit).Location)//Wenn die Frucht die Location geändert hat, also von der Schlange gefressen worden ist.
             {
-                tbAktuellerSpielstand.Text = Spieler1.spielt().ToString();
-                tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
-                //Neue Picturebox wird erstellt und der Schlange hinzugefügt
+                tbAktuellerSpielstand.Text = Spieler1.spielt().ToString(); //aktuelle Puktezahl wird während dem Spiel aktualisiert
+                tbRekord.Text = Spieler1.rekordAktualisieren().ToString(); //Rekord wird während dem Spiel aktualisiert, wenn die aktuelle Punktezahl größer wird.
+                
+                //Neue Picturebox wird erstellt und der Schlange hinzugefügt:
                 sh.SchlangenTeilHinzufügen(NeuesSchlangenteil());
 
                 //Wenn das vorige PowerUp nicht mehr aktiv ist:
@@ -113,17 +104,20 @@ namespace snakegame
                 }
                 
             }
+
             //PowerUp check
             if (pbPU.Visible == true)
             {
-                if (pbPU.Location != sh.PowerUpKollission(pbPU).Location)
+                if (pbPU.Location != sh.PowerUpKollission(pbPU).Location)//Änderung der Location
                 {
+                    //Schneller Modus:
                     if (pbPU.Tag.ToString() == "fast")
                         timerSnake.Interval = 70;
+                    //Langsamer Modus:
                     else if (pbPU.Tag.ToString() == "slow")
                         timerSnake.Interval = 250;
-                    timerPU.Start();
-                    pbPU.Hide();
+                    timerPU.Start(); //Timer dauert 5 Sec.
+                    pbPU.Hide(); //PowerUp Picturebox verschwindet.
                 }
             }
             
@@ -137,7 +131,8 @@ namespace snakegame
                 pBschlangenkopf.Hide();
                 pbFruit.Hide();
                 pbPU.Hide();
-                //Highscore speichern, wenn Benutzer angemeldet ist:
+
+                //Highscore speichern, wenn Benutzer angemeldet ist, sonst nicht:
                 int neuerHighscore = Convert.ToInt32(tbAktuellerSpielstand.Text);
                 if (neuerHighscore > aktuellerHighscore && angemeldet == true)
                 {
@@ -149,42 +144,57 @@ namespace snakegame
         }
         private void pBclose_Click(object sender, EventArgs e)
         {
+            //Projekt ist schließbar über eigenen Button:
             this.Close();
         }
         private void pBminus_Click(object sender, EventArgs e)
         {
+            //Projekt ist über eigenen Button minimierbar:
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void pBrestart_Click(object sender, EventArgs e)
+        private void pBrestart_Click(object sender, EventArgs e) //Wenn man stirbt und den Restart Button klickt.
         {
+            //Die Bilder vom vorherigen Schlangenkörper werden entfernt:
             foreach (Schlange body in sh.schlangenListe)
             {
                 this.Controls.Remove(body.bild);
             }
+
+            //Startbildschirm erscheint wieder:
             panelRestart.Hide();
             pBschlangenkopf.Show();
             pbFruit.Show();
             pbPU.Show();
+
+            //Hüpft zur Methode "start"
             start();
         }
 
         private void start()
         {
+            //Schlangenkopf wird erstellt:
             sh = new SnakeHead(pBschlangenkopf);
 
-            //sh.schlangenListe.Clear();
             
+            //Richtung wird auf null gesetzt, dass die Schlange stehen bleibt:
             direction = "";
 
+            //Wird für die Abfrage, ob der Highscore gespeichert wird oder nicht, benötigt:
             aktuellerHighscore = Convert.ToInt32(tbRekord.Text);
+
+            //Punkte werden auf 0 zurückgesetzt:
             tbAktuellerSpielstand.Text = Spieler1.punkteZuruecksetzen().ToString();
+            //Rekord wird nach dem Login oder der Registrierung gleich aktualisiert:
             tbRekord.Text = Spieler1.rekordAktualisieren().ToString();
+
+            //Timer startet:
             timerSnake.Start();
         }
 
         private void btLogin_Click(object sender, EventArgs e)
         {
+            //Hier wird zur anderen Form gehüpft, wo man sich anmelden bzw. registrieren kann.
             Hide();
             LoginForm loginform = new LoginForm();
             loginform.Closed += (s, args) => Close();
@@ -194,9 +204,9 @@ namespace snakegame
 
        
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //WASD oder Pfeil nach oben, unten, rechts und links sorgen dafür, dass sich der  Schlangenkopf in eine andere Richtung bewegt und auch das Bild aktualisiert wird. Mit 5 Millisekunden 
         {
-
+            
             if (keyData == Keys.Left || keyData == Keys.A)
             {
                 if (direction != "o")
@@ -246,11 +256,11 @@ namespace snakegame
 
         public PictureBox NeuesSchlangenteil()
         {
+            //Picturebox für neuen Schlangenkörper wird erstellt:
             PictureBox Schlange = new PictureBox();
             Schlange.Parent = this;
             Schlange.Size = new Size(50, 50);
 
-            //Schlange.BackgroundImage = Image.FromFile("images/body.png");
             Schlange.BackColor = Color.Blue;
             Schlange.BorderStyle = BorderStyle.FixedSingle;
             Schlange.BackgroundImageLayout = ImageLayout.Stretch;
@@ -259,9 +269,10 @@ namespace snakegame
             return Schlange;
         }
 
+        #region Form kann mithilfe vom Panel bewegt werden
         //Form1 bewegen:
         private Point mouse_offset;
-
+        
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouse_offset = new Point(-e.X, -e.Y);
@@ -292,5 +303,7 @@ namespace snakegame
                 timerPU.Stop();
             }
         }
+
+        #endregion
     }
 }
