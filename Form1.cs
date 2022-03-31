@@ -52,6 +52,7 @@ namespace snakegame
             pBminus.BackgroundImage = Image.FromFile("images/minus.png");
             pBrestart.BackgroundImage = Image.FromFile("images/restart.png");
             pBschlangenkopf.BringToFront();
+            pBschlangenkopf2.BringToFront();
             pBrestart.BringToFront();
             pbFruit.SendToBack();
             pbFruit.BackgroundImage = Image.FromFile("images/melone.png");
@@ -85,57 +86,78 @@ namespace snakegame
             con.Close();
 
         }
+
+        private void FruitKollission(SnakeHead sh)
+        {
+            //Neue Picturebox wird erstellt und der Schlange hinzugefügt:
+            sh.SchlangenTeilHinzufügen(NeuesSchlangenteil());
+
+            tbAktuellerSpielstand.Text = Spieler1.spielt().ToString(); //aktuelle Puktezahl wird während dem Spiel aktualisiert
+            tbRekord.Text = Spieler1.rekordAktualisieren().ToString(); //Rekord wird während dem Spiel aktualisiert, wenn die aktuelle Punktezahl größer wird.
+
+            //Wenn das vorige PowerUp nicht mehr aktiv ist:
+            if (timerPU.Enabled == false)
+            {
+                int ran = rand.Next(0, 2);
+                if (ran == 0)
+                {
+                    sh.PowerUpErstellen(pbPU);
+                    pbPU.Show();
+                }
+            }
+        }
+        private void PUKollission(SnakeHead sh)
+        {
+            //Schneller Modus:
+            if (pbPU.Tag.ToString() == "fast")
+                timerSnake.Interval = 90;
+            //Langsamer Modus:
+            else if (pbPU.Tag.ToString() == "slow")
+                timerSnake.Interval = 250;
+            timerPU.Start(); //Timer dauert 5 Sec.
+            pbPU.Hide(); //PowerUp Picturebox verschwindet.
+        }
+
         private void timerSnake_Tick(object sender, EventArgs e)
         {
             //Fruit check:
             if (pbFruit.Location != sh.FruitKollission(pbFruit).Location)//Wenn die Frucht die Location geändert hat, also von der Schlange gefressen worden ist.
             {
-                tbAktuellerSpielstand.Text = Spieler1.spielt().ToString(); //aktuelle Puktezahl wird während dem Spiel aktualisiert
-                tbRekord.Text = Spieler1.rekordAktualisieren().ToString(); //Rekord wird während dem Spiel aktualisiert, wenn die aktuelle Punktezahl größer wird.
-
-                //Neue Picturebox wird erstellt und der Schlange hinzugefügt:
-                if (pbFruit.Location == sh.bild.Location)
-                    sh.SchlangenTeilHinzufügen(NeuesSchlangenteil());
-                else if (player2)
-                    sh2.SchlangenTeilHinzufügen(NeuesSchlangenteil());
-
-                //Wenn das vorige PowerUp nicht mehr aktiv ist:
-                if(timerPU.Enabled == false)
-                {
-                    int ran = rand.Next(0, 2);
-                    if (ran == 0)
-                    {
-                        sh.PowerUpErstellen(pbPU);
-                        pbPU.Show();
-                    }
-                }
+                FruitKollission(sh);
                 
             }
-
+            else if (player2)
+                if (pbFruit.Location != sh2.FruitKollission(pbFruit).Location)
+                {
+                    FruitKollission(sh2);
+                }
             //PowerUp check
             if (pbPU.Visible == true)
             {
                 if (pbPU.Location != sh.PowerUpKollission(pbPU).Location)//Änderung der Location
                 {
-                    //Schneller Modus:
-                    if (pbPU.Tag.ToString() == "fast")
-                        timerSnake.Interval = 70;
-                    //Langsamer Modus:
-                    else if (pbPU.Tag.ToString() == "slow")
-                        timerSnake.Interval = 250;
-                    timerPU.Start(); //Timer dauert 5 Sec.
-                    pbPU.Hide(); //PowerUp Picturebox verschwindet.
+                    PUKollission(sh);
                 }
+                else if (player2)
+                    if (pbPU.Location != sh2.PowerUpKollission(pbPU).Location)
+                    {
+                        PUKollission(sh2);
+                    }
             }
-            
 
 
+            bool p2Angestossen  = false;
+            if (player2)
+                if (!sh2.bewegen(direction2))
+                    p2Angestossen = true;
             //Schlange ist angestoßen:
-            if (!sh.bewegen(direction))
+            if (!sh.bewegen(direction) || p2Angestossen)
             {
                 timerSnake.Stop();
                 panelRestart.Show();
                 pBschlangenkopf.Hide();
+                if (player2)
+                    pBschlangenkopf2.Hide();
                 pbFruit.Hide();
                 pbPU.Hide();
 
@@ -163,14 +185,14 @@ namespace snakegame
         private void pBrestart_Click(object sender, EventArgs e) //Wenn man stirbt und den Restart Button klickt.
         {
             //Die Bilder vom vorherigen Schlangenkörper werden entfernt:
-            foreach (Schlange body in sh.schlangenListe)
-            {
-                this.Controls.Remove(body.bild);
-            }
-
+            
+            
+            
             //Startbildschirm erscheint wieder:
             panelRestart.Hide();
             pBschlangenkopf.Show();
+            if (player2)
+                pBschlangenkopf2.Show();
             pbFruit.Show();
             pbPU.Show();
 
@@ -180,10 +202,25 @@ namespace snakegame
 
         private void start()
         {
+            foreach (SnakeHead sh in SnakeHead.snakeHeads)
+            {
+                foreach (Schlange body in sh.schlangenListe)
+                {
+                    this.Controls.Remove(body.bild);
+                }
+            }
+            pBschlangenkopf.Location = new Point(0, 300);
+            if(player2)
+                pBschlangenkopf2.Location = new Point(750, 300);
+            SnakeHead.snakeHeads.Clear();
             //Schlangenkopf wird erstellt:
             sh = new SnakeHead(pBschlangenkopf);
             if (player2)
+            {
                 sh2 = new SnakeHead(pBschlangenkopf2);
+                pBschlangenkopf2.Show();
+            }
+                
             
             //Richtung wird auf null gesetzt, dass die Schlange stehen bleibt:
             direction = "";
@@ -363,7 +400,7 @@ namespace snakegame
             }
             else
             {
-                timerSnake.Interval = 150;
+                timerSnake.Interval = 250;
                 timerPU.Tag = "5";
                 timerPU.Stop();
             }
@@ -373,8 +410,19 @@ namespace snakegame
 
         private void btPlayer2_Click(object sender, EventArgs e)
         {
-            online = false;
-            player2 = true;
+            if (!player2)
+            {
+                direction = "";
+                online = false;
+                player2 = true;
+                start();
+            }
+            else
+            {
+                player2 = false;
+                start();
+            }
+                
         }
     }
 }

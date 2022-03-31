@@ -163,7 +163,7 @@
             // 
             // timerSnake
             // 
-            this.timerSnake.Interval = 150;
+            this.timerSnake.Interval = 200;
             this.timerSnake.Tick += new System.EventHandler(this.timerSnake_Tick);
             // 
             // panelRestart
@@ -204,7 +204,7 @@
             this.pBschlangenkopf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pBschlangenkopf.ErrorImage = null;
             this.pBschlangenkopf.Image = global::snakegame.Properties.Resources.Snakehead1;
-            this.pBschlangenkopf.Location = new System.Drawing.Point(400, 400);
+            this.pBschlangenkopf.Location = new System.Drawing.Point(600, 300);
             this.pBschlangenkopf.Margin = new System.Windows.Forms.Padding(2);
             this.pBschlangenkopf.Name = "pBschlangenkopf";
             this.pBschlangenkopf.Size = new System.Drawing.Size(50, 50);
@@ -234,12 +234,13 @@
             this.pBschlangenkopf2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pBschlangenkopf2.ErrorImage = null;
             this.pBschlangenkopf2.Image = global::snakegame.Properties.Resources.Snakehead1;
-            this.pBschlangenkopf2.Location = new System.Drawing.Point(300, 300);
+            this.pBschlangenkopf2.Location = new System.Drawing.Point(0, 300);
             this.pBschlangenkopf2.Margin = new System.Windows.Forms.Padding(2);
             this.pBschlangenkopf2.Name = "pBschlangenkopf2";
             this.pBschlangenkopf2.Size = new System.Drawing.Size(50, 50);
             this.pBschlangenkopf2.TabIndex = 7;
             this.pBschlangenkopf2.TabStop = false;
+            this.pBschlangenkopf2.Visible = false;
             // 
             // btPlayer2
             // 

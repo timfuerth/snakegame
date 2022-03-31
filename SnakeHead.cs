@@ -10,17 +10,20 @@ namespace snakegame
 {
     public class SnakeHead : Objekte
     {
+        static public List<SnakeHead> snakeHeads = new List<SnakeHead>();
         public List<Schlange> schlangenListe = new List<Schlange>();
         public Random rand = new Random();
         int defaultsize = 50;
-        int x = 400;
-        int y = 400;
+        int x;
+        int y;
         
         string[] fruitnames = { "honigmelone", "kiwi", "orange", "apfel", "melone", "avocado", "zitrone", "erdbeere", "kokosnuss" };
         string[] PUnames = { "fast", "slow"};
         public SnakeHead(PictureBox bild) : base(bild)
         {
-            
+            x = bild.Left;
+            y = bild.Top;
+            snakeHeads.Add(this);
         }
 
         public bool bewegen(string direction)
@@ -43,22 +46,42 @@ namespace snakegame
 
             bild.Location = new Point(x, y);
 
-            
-
-
-
             if (schlangenListe.Count > 0)
             {
-                
+
                 for (int i = schlangenListe.Count; i > 1; i--)
                 {
-                    if (bild.Bounds.IntersectsWith(schlangenListe[i-1].bild.Bounds))
+                    if (bild.Bounds.IntersectsWith(schlangenListe[i - 1].bild.Bounds))
                         return false;
-                    schlangenListe[i-1].bild.Location = schlangenListe[i - 2].bild.Location;
+                    schlangenListe[i - 1].bild.Location = schlangenListe[i - 2].bild.Location;
                 }
-                
+
                 schlangenListe[0].bild.Location = new Point(oldX, oldY);
             }
+            
+            if (snakeHeads.Count > 1)
+            {
+                foreach (SnakeHead head in snakeHeads)
+                {
+                    if (head != this)
+                    {
+                        if (head.schlangenListe.Count > 0)
+                        {
+
+                            for (int i = head.schlangenListe.Count; i > 1; i--)
+                            {
+                                if (bild.Bounds.IntersectsWith(head.schlangenListe[i - 1].bild.Bounds))
+                                    return false;
+                            }
+                        }
+                        if (bild.Bounds.IntersectsWith(head.bild.Bounds))
+                            return false;
+                    }
+                    
+                }
+            }
+            
+
             return true;
         }
 
