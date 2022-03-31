@@ -26,11 +26,15 @@ namespace snakegame
         public static bool angemeldet;
         int aktuellerHighscore;
         Random rand = new Random();
-
+        
+        //Player2:
+        bool player2 = false;
+        bool online  = false;
+        string direction2;
+        SnakeHead sh2;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
             //Form1 Größe:
             this.MinimumSize = new Size(800, 800); 
             this.MaximumSize = new Size(800, 800);
@@ -88,9 +92,12 @@ namespace snakegame
             {
                 tbAktuellerSpielstand.Text = Spieler1.spielt().ToString(); //aktuelle Puktezahl wird während dem Spiel aktualisiert
                 tbRekord.Text = Spieler1.rekordAktualisieren().ToString(); //Rekord wird während dem Spiel aktualisiert, wenn die aktuelle Punktezahl größer wird.
-                
+
                 //Neue Picturebox wird erstellt und der Schlange hinzugefügt:
-                sh.SchlangenTeilHinzufügen(NeuesSchlangenteil());
+                if (pbFruit.Location == sh.bild.Location)
+                    sh.SchlangenTeilHinzufügen(NeuesSchlangenteil());
+                else if (player2)
+                    sh2.SchlangenTeilHinzufügen(NeuesSchlangenteil());
 
                 //Wenn das vorige PowerUp nicht mehr aktiv ist:
                 if(timerPU.Enabled == false)
@@ -175,10 +182,12 @@ namespace snakegame
         {
             //Schlangenkopf wird erstellt:
             sh = new SnakeHead(pBschlangenkopf);
-
+            if (player2)
+                sh2 = new SnakeHead(pBschlangenkopf2);
             
             //Richtung wird auf null gesetzt, dass die Schlange stehen bleibt:
             direction = "";
+            direction2 = "";
 
             //Wird für die Abfrage, ob der Highscore gespeichert wird oder nicht, benötigt:
             aktuellerHighscore = Convert.ToInt32(tbRekord.Text);
@@ -203,12 +212,10 @@ namespace snakegame
             
         }
 
-       
-
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) //WASD oder Pfeil nach oben, unten, rechts und links sorgen dafür, dass sich der  Schlangenkopf in eine andere Richtung bewegt und auch das Bild aktualisiert wird. Mit 5 Millisekunden 
         {
-            
-            if (keyData == Keys.Left || keyData == Keys.A)
+            #region Player1
+            if (keyData == Keys.A)
             {
                 if (direction != "o")
                 {
@@ -218,7 +225,7 @@ namespace snakegame
                 }
                 
             }
-            if (keyData == Keys.Up || keyData == Keys.W)
+            else if (keyData == Keys.W)
             {
                 if (direction != "s")
                 {
@@ -229,7 +236,7 @@ namespace snakegame
                 
 
             }
-            if (keyData == Keys.Right || keyData == Keys.D)
+            else if (keyData == Keys.D)
             {
                 if (direction != "w")
                 {
@@ -240,7 +247,7 @@ namespace snakegame
                 
 
             }
-            if (keyData == Keys.Down || keyData == Keys.S)
+            else if (keyData == Keys.S)
             {
                 if (direction != "n")
                 {
@@ -251,7 +258,64 @@ namespace snakegame
                 }
                 
             }
-            
+            #endregion
+            #region Player2
+            if (!online)
+            {
+                if (player2)
+                {
+                    if (keyData == Keys.Left)
+                    {
+                        if (direction2 != "o")
+                        {
+                            direction2 = "w";
+                            pBschlangenkopf2.Image = Image.FromFile("images/Snakehead_links.png");
+                            Thread.Sleep(5);
+                        }
+
+                    }
+                    else if (keyData == Keys.Up)
+                    {
+                        if (direction2 != "s")
+                        {
+                            direction2 = "n";
+                            pBschlangenkopf2.Image = Image.FromFile("images/Snakehead.png");
+                            Thread.Sleep(5);
+                        }
+
+
+                    }
+                    else if (keyData == Keys.Right)
+                    {
+                        if (direction2 != "w")
+                        {
+                            direction2 = "o";
+                            pBschlangenkopf2.Image = Image.FromFile("images/Snakehead_rechts.png");
+                            Thread.Sleep(5);
+                        }
+
+
+                    }
+                    else if (keyData == Keys.Down)
+                    {
+                        if (direction2 != "n")
+                        {
+                            direction2 = "s";
+                            pBschlangenkopf2.Image = Image.FromFile("images/Snakehead_unten.png");
+                            Thread.Sleep(5);
+
+                        }
+
+                    }
+                }
+               
+            }
+            #endregion
+
+
+
+
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -306,5 +370,11 @@ namespace snakegame
         }
 
         #endregion
+
+        private void btPlayer2_Click(object sender, EventArgs e)
+        {
+            online = false;
+            player2 = true;
+        }
     }
 }

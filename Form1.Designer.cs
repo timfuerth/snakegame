@@ -45,6 +45,8 @@
             this.pBschlangenkopf = new System.Windows.Forms.PictureBox();
             this.pbPU = new System.Windows.Forms.PictureBox();
             this.timerPU = new System.Windows.Forms.Timer(this.components);
+            this.pBschlangenkopf2 = new System.Windows.Forms.PictureBox();
+            this.btPlayer2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRekord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAktuellerSpielstand)).BeginInit();
@@ -55,11 +57,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btPlayer2);
             this.panel1.Controls.Add(this.tbRekord);
             this.panel1.Controls.Add(this.pbRekord);
             this.panel1.Controls.Add(this.tbAktuellerSpielstand);
@@ -82,6 +86,7 @@
             this.tbRekord.Location = new System.Drawing.Point(200, 3);
             this.tbRekord.Multiline = true;
             this.tbRekord.Name = "tbRekord";
+            this.tbRekord.ReadOnly = true;
             this.tbRekord.Size = new System.Drawing.Size(79, 44);
             this.tbRekord.TabIndex = 9;
             this.tbRekord.Text = "0";
@@ -105,6 +110,7 @@
             this.tbAktuellerSpielstand.Location = new System.Drawing.Point(59, 3);
             this.tbAktuellerSpielstand.Multiline = true;
             this.tbAktuellerSpielstand.Name = "tbAktuellerSpielstand";
+            this.tbAktuellerSpielstand.ReadOnly = true;
             this.tbAktuellerSpielstand.Size = new System.Drawing.Size(79, 44);
             this.tbAktuellerSpielstand.TabIndex = 7;
             this.tbAktuellerSpielstand.Text = "0";
@@ -222,11 +228,35 @@
             this.timerPU.Tag = "5";
             this.timerPU.Tick += new System.EventHandler(this.timerPU_Tick);
             // 
+            // pBschlangenkopf2
+            // 
+            this.pBschlangenkopf2.BackColor = System.Drawing.Color.Transparent;
+            this.pBschlangenkopf2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pBschlangenkopf2.ErrorImage = null;
+            this.pBschlangenkopf2.Image = global::snakegame.Properties.Resources.Snakehead1;
+            this.pBschlangenkopf2.Location = new System.Drawing.Point(300, 300);
+            this.pBschlangenkopf2.Margin = new System.Windows.Forms.Padding(2);
+            this.pBschlangenkopf2.Name = "pBschlangenkopf2";
+            this.pBschlangenkopf2.Size = new System.Drawing.Size(50, 50);
+            this.pBschlangenkopf2.TabIndex = 7;
+            this.pBschlangenkopf2.TabStop = false;
+            // 
+            // btPlayer2
+            // 
+            this.btPlayer2.Location = new System.Drawing.Point(318, 9);
+            this.btPlayer2.Name = "btPlayer2";
+            this.btPlayer2.Size = new System.Drawing.Size(132, 38);
+            this.btPlayer2.TabIndex = 10;
+            this.btPlayer2.Text = "button1";
+            this.btPlayer2.UseVisualStyleBackColor = true;
+            this.btPlayer2.Click += new System.EventHandler(this.btPlayer2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 800);
+            this.Controls.Add(this.pBschlangenkopf2);
             this.Controls.Add(this.pbPU);
             this.Controls.Add(this.pbFruit);
             this.Controls.Add(this.panelRestart);
@@ -248,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFruit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBschlangenkopf2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,6 +300,8 @@
         private System.Windows.Forms.TextBox tbAktuellerSpielstand;
         private System.Windows.Forms.PictureBox pbPU;
         private System.Windows.Forms.Timer timerPU;
+        private System.Windows.Forms.PictureBox pBschlangenkopf2;
+        private System.Windows.Forms.Button btPlayer2;
     }
 }
 
